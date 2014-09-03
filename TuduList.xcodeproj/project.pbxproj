@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8E5C67D8352347CEB581741F /* libPods-TuduList.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65FDD0B7B4CE452181F99F17 /* libPods-TuduList.a */; };
 		926C749A19B763A500FD2A97 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926C749919B763A500FD2A97 /* AppDelegate.swift */; };
-		926C749C19B763A500FD2A97 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926C749B19B763A500FD2A97 /* ViewController.swift */; };
+		926C749C19B763A500FD2A97 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926C749B19B763A500FD2A97 /* LoginViewController.swift */; };
 		926C749F19B763A500FD2A97 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 926C749D19B763A500FD2A97 /* Main.storyboard */; };
 		926C74A119B763A500FD2A97 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 926C74A019B763A500FD2A97 /* Images.xcassets */; };
 		926C74AD19B763A600FD2A97 /* TuduListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926C74AC19B763A600FD2A97 /* TuduListTests.swift */; };
@@ -25,10 +26,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		65FDD0B7B4CE452181F99F17 /* libPods-TuduList.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TuduList.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		79677C08E4D34A549058351A /* Pods-TuduList.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TuduList.xcconfig"; path = "Pods/Pods-TuduList.xcconfig"; sourceTree = "<group>"; };
+		9200A83E19B7658600971EE7 /* TuduList-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TuduList-Bridging-Header.h"; sourceTree = "<group>"; };
 		926C749419B763A500FD2A97 /* TuduList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TuduList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		926C749819B763A500FD2A97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		926C749919B763A500FD2A97 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		926C749B19B763A500FD2A97 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		926C749B19B763A500FD2A97 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		926C749E19B763A500FD2A97 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		926C74A019B763A500FD2A97 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		926C74A619B763A500FD2A97 /* TuduListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TuduListTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -41,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E5C67D8352347CEB581741F /* libPods-TuduList.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -54,12 +59,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		70AC8F6A499946338889590B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				65FDD0B7B4CE452181F99F17 /* libPods-TuduList.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9200A83D19B7657000971EE7 /* BridgeFile */ = {
+			isa = PBXGroup;
+			children = (
+				9200A83E19B7658600971EE7 /* TuduList-Bridging-Header.h */,
+			);
+			name = BridgeFile;
+			sourceTree = "<group>";
+		};
 		926C748B19B763A500FD2A97 = {
 			isa = PBXGroup;
 			children = (
 				926C749619B763A500FD2A97 /* TuduList */,
 				926C74A919B763A600FD2A97 /* TuduListTests */,
 				926C749519B763A500FD2A97 /* Products */,
+				79677C08E4D34A549058351A /* Pods-TuduList.xcconfig */,
+				70AC8F6A499946338889590B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -75,8 +98,9 @@
 		926C749619B763A500FD2A97 /* TuduList */ = {
 			isa = PBXGroup;
 			children = (
+				9200A83D19B7657000971EE7 /* BridgeFile */,
 				926C749919B763A500FD2A97 /* AppDelegate.swift */,
-				926C749B19B763A500FD2A97 /* ViewController.swift */,
+				926C749B19B763A500FD2A97 /* LoginViewController.swift */,
 				926C749D19B763A500FD2A97 /* Main.storyboard */,
 				926C74A019B763A500FD2A97 /* Images.xcassets */,
 				926C749719B763A500FD2A97 /* Supporting Files */,
@@ -116,9 +140,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 926C74B019B763A600FD2A97 /* Build configuration list for PBXNativeTarget "TuduList" */;
 			buildPhases = (
+				9A7F079A44C04BFAB1B601ED /* Check Pods Manifest.lock */,
 				926C749019B763A500FD2A97 /* Sources */,
 				926C749119B763A500FD2A97 /* Frameworks */,
 				926C749219B763A500FD2A97 /* Resources */,
+				50CF63BEF6184FE0ACDA4F0F /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -203,12 +229,45 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		50CF63BEF6184FE0ACDA4F0F /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-TuduList-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9A7F079A44C04BFAB1B601ED /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		926C749019B763A500FD2A97 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				926C749C19B763A500FD2A97 /* ViewController.swift in Sources */,
+				926C749C19B763A500FD2A97 /* LoginViewController.swift in Sources */,
 				926C749A19B763A500FD2A97 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -322,23 +381,32 @@
 		};
 		926C74B119B763A600FD2A97 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 79677C08E4D34A549058351A /* Pods-TuduList.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = TuduList/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "TuduList/TuduList-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		926C74B219B763A600FD2A97 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 79677C08E4D34A549058351A /* Pods-TuduList.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = TuduList/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "TuduList/TuduList-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -395,6 +463,7 @@
 				926C74B219B763A600FD2A97 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		926C74B319B763A600FD2A97 /* Build configuration list for PBXNativeTarget "TuduListTests" */ = {
 			isa = XCConfigurationList;
@@ -403,6 +472,7 @@
 				926C74B519B763A600FD2A97 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

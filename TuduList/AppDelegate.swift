@@ -12,11 +12,41 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
                             
     var window: UIWindow?
+    let ParseAppID:String! = "XuI4Z9QGBzbSQoW2u7soBAuzocB8jnJ7vUYghYwF"
+    let ParseClientKey:String! = "X8KMqOHjcWNwHQdGACG0uUlfN334tXy8L0rmbvFZ"
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        Parse.setApplicationId(ParseAppID, clientKey: ParseClientKey)
+        PFFacebookUtils.initializeFacebook()
+        
+//        var testObj:PFObject = PFObject(className: "TestClass")
+//        testObj["name"] = "Bruno!"
+//        
+//        testObj.saveInBackgroundWithBlock { (success, error) -> Void in
+//            if success{
+//                println("Saved!")
+//            }else{
+//                println("There was problem :(")
+//            }
+//        }
+        
         return true
+    }
+    
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String, annotation: AnyObject?) -> Bool {
+        return FBAppCall .handleOpenURL(url, sourceApplication: sourceApplication, withSession: PFFacebookUtils.session())
+    }
+    
+    func applicationDidBecomeActive(application: UIApplication) {
+        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        FBAppCall.handleDidBecomeActiveWithSession(PFFacebookUtils.session())
+    }
+    
+    func applicationWillTerminate(application: UIApplication) {
+        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        [PFFacebookUtils.session().close()]
     }
 
     func applicationWillResignActive(application: UIApplication) {
@@ -31,14 +61,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillEnterForeground(application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-    }
-
-    func applicationDidBecomeActive(application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    }
-
-    func applicationWillTerminate(application: UIApplication) {
-        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
 
