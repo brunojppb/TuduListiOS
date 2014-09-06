@@ -8,11 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		8E5C67D8352347CEB581741F /* libPods-TuduList.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65FDD0B7B4CE452181F99F17 /* libPods-TuduList.a */; };
+		92668E3519BA2F6500234DDD /* TuduItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92668E3419BA2F6500234DDD /* TuduItemsViewController.swift */; };
 		926C749A19B763A500FD2A97 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926C749919B763A500FD2A97 /* AppDelegate.swift */; };
 		926C749C19B763A500FD2A97 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926C749B19B763A500FD2A97 /* LoginViewController.swift */; };
 		926C749F19B763A500FD2A97 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 926C749D19B763A500FD2A97 /* Main.storyboard */; };
 		926C74A119B763A500FD2A97 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 926C74A019B763A500FD2A97 /* Images.xcassets */; };
 		926C74AD19B763A600FD2A97 /* TuduListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926C74AC19B763A600FD2A97 /* TuduListTests.swift */; };
+		929D653B19B7A88900162CDB /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929D653A19B7A88900162CDB /* ProfileViewController.swift */; };
+		92B309EF19BA59A000ECC076 /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B309EE19BA59A000ECC076 /* ItemDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +32,7 @@
 		65FDD0B7B4CE452181F99F17 /* libPods-TuduList.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TuduList.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		79677C08E4D34A549058351A /* Pods-TuduList.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TuduList.xcconfig"; path = "Pods/Pods-TuduList.xcconfig"; sourceTree = "<group>"; };
 		9200A83E19B7658600971EE7 /* TuduList-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TuduList-Bridging-Header.h"; sourceTree = "<group>"; };
+		92668E3419BA2F6500234DDD /* TuduItemsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TuduItemsViewController.swift; sourceTree = "<group>"; };
 		926C749419B763A500FD2A97 /* TuduList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TuduList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		926C749819B763A500FD2A97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		926C749919B763A500FD2A97 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -38,6 +42,8 @@
 		926C74A619B763A500FD2A97 /* TuduListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TuduListTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		926C74AB19B763A600FD2A97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		926C74AC19B763A600FD2A97 /* TuduListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TuduListTests.swift; sourceTree = "<group>"; };
+		929D653A19B7A88900162CDB /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		92B309EE19BA59A000ECC076 /* ItemDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,9 +104,10 @@
 		926C749619B763A500FD2A97 /* TuduList */ = {
 			isa = PBXGroup;
 			children = (
+				926F509519B77F9A00A55D8B /* CustomCells */,
+				926F509219B77F7100A55D8B /* Controllers */,
 				9200A83D19B7657000971EE7 /* BridgeFile */,
 				926C749919B763A500FD2A97 /* AppDelegate.swift */,
-				926C749B19B763A500FD2A97 /* LoginViewController.swift */,
 				926C749D19B763A500FD2A97 /* Main.storyboard */,
 				926C74A019B763A500FD2A97 /* Images.xcassets */,
 				926C749719B763A500FD2A97 /* Supporting Files */,
@@ -131,6 +138,24 @@
 				926C74AB19B763A600FD2A97 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		926F509219B77F7100A55D8B /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				926C749B19B763A500FD2A97 /* LoginViewController.swift */,
+				929D653A19B7A88900162CDB /* ProfileViewController.swift */,
+				92668E3419BA2F6500234DDD /* TuduItemsViewController.swift */,
+				92B309EE19BA59A000ECC076 /* ItemDetailViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		926F509519B77F9A00A55D8B /* CustomCells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = CustomCells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,8 +292,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92B309EF19BA59A000ECC076 /* ItemDetailViewController.swift in Sources */,
+				929D653B19B7A88900162CDB /* ProfileViewController.swift in Sources */,
 				926C749C19B763A500FD2A97 /* LoginViewController.swift in Sources */,
 				926C749A19B763A500FD2A97 /* AppDelegate.swift in Sources */,
+				92668E3519BA2F6500234DDD /* TuduItemsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

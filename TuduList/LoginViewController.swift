@@ -8,7 +8,16 @@
 
 import UIKit
 
+
+protocol LoginViewControllerDelegate{
+    func didFinishLogin()
+}
+
+
 class LoginViewController: UIViewController {
+    
+    var profileView:ProfileViewController = ProfileViewController();
+    var delegate:LoginViewControllerDelegate?
                             
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,11 +54,43 @@ class LoginViewController: UIViewController {
                 }else{
                     println("User with facebook Logged in")
                 }
+                
+                self.delegate?.didFinishLogin()
+                self.dismissViewControllerAnimated(true, completion: nil)
             }
         }
-        
-        
     }
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
