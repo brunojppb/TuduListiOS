@@ -1,0 +1,25 @@
+PODS:
+  - Bolts (1.1.2)
+  - Facebook-iOS-SDK (3.17.0):
+    - Bolts
+  - MBProgressHUD (0.9)
+  - Parse-iOS (1.2.21):
+    - Bolts (~> 1.1.2)
+  - ParseFacebookUtils (1.2.21):
+    - Facebook-iOS-SDK (~> 3.9.0)
+    - Parse-iOS (~> 1.2.21)
+
+DEPENDENCIES:
+  - Facebook-iOS-SDK
+  - MBProgressHUD (~> 0.8)
+  - Parse-iOS
+  - ParseFacebookUtils
+
+SPEC CHECKSUMS:
+  Bolts: 2635e8698a630774689441047f3465d78c48d485
+  Facebook-iOS-SDK: f20274d809f112ba540842e2b6cbe50128d51b7b
+  MBProgressHUD: 2038dbcf3dce73215abed6001657043d53aa79a8
+  Parse-iOS: e2a58ad3774dfc9adf39ae517a89706085bd3c4d
+  ParseFacebookUtils: ecd7bd765608d1e5d95059d10b19985d3057f201
+
+COCOAPODS: 0.33.1

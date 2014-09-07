@@ -10,7 +10,7 @@ import UIKit
 
 class TuduItemsViewController: UITableViewController {
     
-    var tuduItems:[PFObject]?
+    var tuduItems:[PFObject] = [PFObject]()
 
     @IBAction func showProfileScreen(sender: UIBarButtonItem?) {
         
@@ -21,8 +21,33 @@ class TuduItemsViewController: UITableViewController {
         super.viewDidLoad()
         if PFUser.currentUser() == nil{
             self.showProfileScreen(nil)
+        }else{
+            self.loadTuduItemsFromParse()
         }
 
+    }
+    
+    func loadTuduItemsFromParse() -> Void{
+        
+        let query:PFQuery = PFQuery(className: "TuduItem")
+        query.whereKey("user", equalTo:PFUser.currentUser())
+        query.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
+            if error == nil{
+                println("Query works!!")
+                if let items = objects as? [PFObject]{
+                    for item in items{
+                        self.tuduItems.append(item)
+                    }
+                    self.tableView.reloadData()
+                }
+            }
+        }
+    }
+    
+    func formatDateToFormatedString(date: NSDate) -> String{
+        let formatter:NSDateFormatter = NSDateFormatter()
+        formatter.dateFormat = "h:mm a '-' MM/dd/YY"
+        return formatter.stringFromDate(date)
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,17 +66,20 @@ class TuduItemsViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return 3
+        return self.tuduItems.count
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("ItemCell", forIndexPath: indexPath) as UITableViewCell
-
-        // Configure the cell...
+        
+        let tuduItem:PFObject = self.tuduItems[indexPath.row]
+        cell.detailTextLabel?.text = self.formatDateToFormatedString(tuduItem["dueDate"] as NSDate)
+        cell.textLabel?.text = tuduItem["title"] as? String
 
         return cell
     }
+    
     
 
     /*

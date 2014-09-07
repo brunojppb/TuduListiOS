@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6206.9" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="H2E-f9-XiO">
     <dependencies>
-        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7026.1"/>
         <capability name="Constraints with attributes relative to the layout margin" minToolsVersion="6.0"/>
     </dependencies>
@@ -219,6 +218,9 @@
                                                     <rect key="frame" x="8" y="13" width="304" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="VWO-S3-Tt2" id="ba4-p7-ngj"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -296,6 +298,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Add Item" id="5SP-CK-KVD">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="OG2-zH-DoA">
+                            <connections>
+                                <action selector="cancel:" destination="VWO-S3-Tt2" id="ApL-Pc-P7u"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="m7B-Mw-5lR">
                             <connections>
                                 <action selector="done:" destination="VWO-S3-Tt2" id="lXW-zL-2yV"/>
@@ -305,7 +312,8 @@
                     <connections>
                         <outlet property="contentText" destination="D1K-Hi-1Cx" id="JEh-EI-8rz"/>
                         <outlet property="datePicker" destination="cP4-iB-nzl" id="Jpw-CX-1tr"/>
-                        <outlet property="dueDateLabel" destination="aVI-ac-EIS" id="U2O-uU-dQP"/>
+                        <outlet property="doneButton" destination="m7B-Mw-5lR" id="otv-mQ-DJU"/>
+                        <outlet property="remindMeLabel" destination="xwd-nv-eA8" id="aLf-Hf-Qqg"/>
                         <outlet property="remindmeSwitch" destination="8w4-M8-gAO" id="5xN-cs-QDw"/>
                         <outlet property="titleText" destination="fTp-eg-Oeq" id="9pW-4H-QEc"/>
                     </connections>
@@ -313,25 +321,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N8U-vS-lhE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1369" y="747"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="C2a-5h-mdy">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Z29-C7-mSJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5kf-Rq-cbd" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" id="umQ-aj-cDq"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="lbC-Zm-uMU">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="2gl-UU-ZYe" kind="relationship" relationship="rootViewController" id="anW-Ae-gUe"/>
-                    </connections>
-                </navigationController>
-            </objects>
-            <point key="canvasLocation" x="315" y="55"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="gby-jZ-xUQ">
@@ -349,7 +338,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N59-y5-hoI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-305" y="747"/>
+            <point key="canvasLocation" x="-185" y="747"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hZd-35-qEY">
@@ -379,7 +368,6 @@
         </simulatedScreenMetrics>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="FFK-Bn-7YU"/>
         <segue reference="hc3-U5-dze"/>
     </inferredMetricsTieBreakers>
 </document>
