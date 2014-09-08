@@ -169,7 +169,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="dnw-7A-kOP" kind="modal" identifier="EditItem" id="hc3-U5-dze"/>
+                                    <segue destination="dnw-7A-kOP" kind="modal" identifier="EditItem" trigger="accessoryAction" id="m87-u8-TYc"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -196,7 +196,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FJP-Je-hQ8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="315" y="747"/>
+            <point key="canvasLocation" x="325" y="833"/>
         </scene>
         <!--Add Item-->
         <scene sceneID="3xy-gu-pQI">
@@ -368,6 +368,6 @@
         </simulatedScreenMetrics>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="hc3-U5-dze"/>
+        <segue reference="hWg-da-HcW"/>
     </inferredMetricsTieBreakers>
 </document>

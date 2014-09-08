@@ -1,4 +1,4 @@
-//
+    //
 //  TuduItemsViewController.swift
 //  TuduList
 //
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TuduItemsViewController: UITableViewController {
+class TuduItemsViewController: UITableViewController, ItemDetailViewControllerDelegate {
     
     var tuduItems:[PFObject] = [PFObject]()
 
@@ -19,29 +19,32 @@ class TuduItemsViewController: UITableViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        if PFUser.currentUser() == nil{
-            self.showProfileScreen(nil)
-        }else{
-            self.loadTuduItemsFromParse()
-        }
-
+        self.loadTuduItemsFromParse()
     }
     
     func loadTuduItemsFromParse() -> Void{
         
-        let query:PFQuery = PFQuery(className: "TuduItem")
-        query.whereKey("user", equalTo:PFUser.currentUser())
-        query.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
-            if error == nil{
-                println("Query works!!")
-                if let items = objects as? [PFObject]{
-                    for item in items{
-                        self.tuduItems.append(item)
+        if PFUser.currentUser() == nil{
+            self.showProfileScreen(nil)
+        }else{
+            
+            let query:PFQuery = PFQuery(className: "TuduItem")
+            query.whereKey("user", equalTo:PFUser.currentUser())
+            query.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
+                if error == nil{
+                    println("Query works!!")
+                    self.tuduItems.removeAll(keepCapacity: false)
+                    if let items = objects as? [PFObject]{
+                        for item in items{
+                            self.tuduItems.append(item)
+                        }
+                        self.tableView.reloadData()
                     }
-                    self.tableView.reloadData()
                 }
             }
+            
         }
+        
     }
     
     func formatDateToFormatedString(date: NSDate) -> String{
@@ -81,18 +84,13 @@ class TuduItemsViewController: UITableViewController {
     }
     
     
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView!, canEditRowAtIndexPath indexPath: NSIndexPath!) -> Bool {
-        // Return NO if you do not want the specified item to be editable.
-        return true
+    
+    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return false
     }
-    */
-
+    
     /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView!, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath!) {
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             // Delete the row from the data source
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
@@ -102,29 +100,65 @@ class TuduItemsViewController: UITableViewController {
     }
     */
 
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView!, moveRowAtIndexPath fromIndexPath: NSIndexPath!, toIndexPath: NSIndexPath!) {
-
+    // MARK: - Table View Delegate
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        let tuduItem:PFObject = self.tuduItems[indexPath.row]
+        self.performSegueWithIdentifier("EditItem", sender: tuduItem)
+        
     }
-    */
+    
 
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView!, canMoveRowAtIndexPath indexPath: NSIndexPath!) -> Bool {
-        // Return NO if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if segue.identifier == "EditItem"{
+            let tuduItem:PFObject = sender as PFObject
+            let navigationController:UINavigationController = segue.destinationViewController as UINavigationController
+            let itemDetailViewController:ItemDetailViewController = navigationController.topViewController as ItemDetailViewController
+            itemDetailViewController.delegate = self
+            itemDetailViewController.title = "Edit Item"
+            itemDetailViewController.itemToEdit = tuduItem
+        }
+        else if segue.identifier == "AddItem"{
+            println("AddItem!")
+            let navigationController:UINavigationController = segue.destinationViewController as UINavigationController
+            let itemDetailViewController:ItemDetailViewController = navigationController.topViewController as ItemDetailViewController
+            itemDetailViewController.delegate = self
+        }
     }
-    */
+    
+    // MARK: - ItemDetailViewControllerDelegate
+    func didFinishEditingItem() {
+        self.loadTuduItemsFromParse()
+    }
+    
+    
+    override func viewWillAppear(animated: Bool) {
+        if self.tuduItems.isEmpty{
+            self.loadTuduItemsFromParse()
+        }
+    }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
