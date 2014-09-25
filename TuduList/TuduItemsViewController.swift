@@ -11,6 +11,7 @@ import UIKit
 class TuduItemsViewController: UITableViewController, ItemDetailViewControllerDelegate {
     
     var tuduItems:[PFObject] = [PFObject]()
+    var reachbility:AFNetworkReachabilityManager?
 
     @IBAction func showProfileScreen(sender: UIBarButtonItem?) {
         
@@ -20,6 +21,7 @@ class TuduItemsViewController: UITableViewController, ItemDetailViewControllerDe
     override func viewDidLoad() {
         super.viewDidLoad()
         self.loadTuduItemsFromParse()
+        self.checkInternetConnection()
     }
     
     func loadTuduItemsFromParse() -> Void{
@@ -86,19 +88,30 @@ class TuduItemsViewController: UITableViewController, ItemDetailViewControllerDe
     
     
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return false
+        return true;
     }
     
-    /*
+    
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        
+        if editingStyle == UITableViewCellEditingStyle.Delete{
+            let tuduItem:PFObject = self.tuduItems[indexPath.row]
+            MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+            self.tuduItems.removeAtIndex(indexPath.row)
+            
+            tuduItem.deleteInBackgroundWithBlock { (success, error) -> Void in
+                if success{
+                    MBProgressHUD.hideHUDForView(self.view, animated: true)
+                    self.tableView.reloadData()
+                    println("The item has been deleted")
+                }
+                else if error != nil{
+                    println("Delete Object error! \(error)")
+                }
+            }
+        }
     }
-    */
+    
 
     // MARK: - Table View Delegate
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -128,6 +141,15 @@ class TuduItemsViewController: UITableViewController, ItemDetailViewControllerDe
             let itemDetailViewController:ItemDetailViewController = navigationController.topViewController as ItemDetailViewController
             itemDetailViewController.delegate = self
         }
+    }
+    
+    func checkInternetConnection(){
+        reachbility = AFNetworkReachabilityManager(forDomain: "www.parse.com")
+        reachbility?.setReachabilityStatusChangeBlock { (status) -> Void in
+            let statusString:String = AFStringFromNetworkReachabilityStatus(status)
+            println("Reachability: \(statusString)")
+        }
+        reachbility?.startMonitoring()
     }
     
     // MARK: - ItemDetailViewControllerDelegate

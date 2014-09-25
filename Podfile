@@ -7,10 +7,10 @@ pod 'Parse-iOS'
 pod 'Facebook-iOS-SDK'
 pod 'ParseFacebookUtils'
 pod 'MBProgressHUD', '~> 0.8'
+pod 'AFNetworking/Reachability'
 
 end
 
 target "TuduListTests" do
 
 end
-

@@ -6,6 +6,12 @@
 // project.
 
 
+// AFNetworking/Reachability
+#define COCOAPODS_POD_AVAILABLE_AFNetworking_Reachability
+#define COCOAPODS_VERSION_MAJOR_AFNetworking_Reachability 2
+#define COCOAPODS_VERSION_MINOR_AFNetworking_Reachability 4
+#define COCOAPODS_VERSION_PATCH_AFNetworking_Reachability 1
+
 // Bolts
 #define COCOAPODS_POD_AVAILABLE_Bolts
 #define COCOAPODS_VERSION_MAJOR_Bolts 1
@@ -27,12 +33,12 @@
 // Parse-iOS
 #define COCOAPODS_POD_AVAILABLE_Parse_iOS
 #define COCOAPODS_VERSION_MAJOR_Parse_iOS 1
-#define COCOAPODS_VERSION_MINOR_Parse_iOS 2
-#define COCOAPODS_VERSION_PATCH_Parse_iOS 21
+#define COCOAPODS_VERSION_MINOR_Parse_iOS 3
+#define COCOAPODS_VERSION_PATCH_Parse_iOS 0
 
 // ParseFacebookUtils
 #define COCOAPODS_POD_AVAILABLE_ParseFacebookUtils
 #define COCOAPODS_VERSION_MAJOR_ParseFacebookUtils 1
-#define COCOAPODS_VERSION_MINOR_ParseFacebookUtils 2
-#define COCOAPODS_VERSION_PATCH_ParseFacebookUtils 21
+#define COCOAPODS_VERSION_MINOR_ParseFacebookUtils 3
+#define COCOAPODS_VERSION_PATCH_ParseFacebookUtils 0
 

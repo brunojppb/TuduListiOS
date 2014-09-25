@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Pods-TuduList-AFNetworking.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-TuduList-Bolts.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -37,32 +42,37 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0A3CC5D19ACA4E6196DAF109</key>
+		<key>4F0E8C8D76B349F99D00C9AB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>0FD95763FB4340E98066459F</key>
+		<key>62E667876F0A496D98283FE3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>16427194FE2A4F7A8A856149</key>
+		<key>7C0F0F815DE5464FAA90B664</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>323B036550314D10A0A793EE</key>
+		<key>8C513B75E17049A5AA478F9D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>968EB12369B749F296811A09</key>
+		<key>8DE73E09677C4D48AC46BA4E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>EFBC021E8AE5434BB9E81EEB</key>
+		<key>D1469155D67141C7A3E7D634</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DEDFF81BFC3D4B5B8CF1F731</key>
 		<dict>
 			<key>primary</key>
 			<true/>
