@@ -16,19 +16,28 @@ protocol LoginViewControllerDelegate{
 
 class LoginViewController: UIViewController {
     
-    var profileView:ProfileViewController = ProfileViewController();
+    
+    //MARK - UI components
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var signUpButton: UIButton!
+    
+    
+    @IBAction func login(sender: AnyObject) {
+    }
+    
+    @IBAction func signUp(sender: AnyObject) {
+    }
+    
+    
     var delegate:LoginViewControllerDelegate?
                             
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        self.configureButtons()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
+    
     @IBAction func facebookLogin(sender: UIButton) {
         //facebook permissions
         let permissions:[String] = ["user_about_me", "user_relationships", "user_birthday", "user_location"]
@@ -60,6 +69,25 @@ class LoginViewController: UIViewController {
             }
         }
     }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    func configureButtons(){
+        //login button customization
+        let loginInsets:UIEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+        let loginBackgroundImage:UIImage = UIImage(named: "greenButton.png").resizableImageWithCapInsets(loginInsets)
+        self.loginButton.setBackgroundImage(loginBackgroundImage, forState: UIControlState.Normal)
+        //signup button customization
+        let signupInsets:UIEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+        let signupBackgroundImage:UIImage = UIImage(named: "orangeButton.png").resizableImageWithCapInsets(signupInsets)
+        self.signUpButton.setBackgroundImage(signupBackgroundImage, forState: UIControlState.Normal)
+        
+        
+    }
+
 }
 
 

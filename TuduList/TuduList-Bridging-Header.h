@@ -5,4 +5,3 @@
 #import <Parse/Parse.h>
 #import <ParseFacebookUtils/PFFacebookUtils.h>
 #import "MBProgressHUD.h"
-#import <AFNetworking/AFNetworkReachabilityManager.h>

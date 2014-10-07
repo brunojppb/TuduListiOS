@@ -29,6 +29,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-TuduList-Parse.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-TuduList-ParseFacebookUtils.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -42,37 +47,42 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>4F0E8C8D76B349F99D00C9AB</key>
+		<key>12110B13BEA0492E8E26755F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>62E667876F0A496D98283FE3</key>
+		<key>3630C95B8B54455183BF7FB2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7C0F0F815DE5464FAA90B664</key>
+		<key>45E201DAD7F64CF29EE5579F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8C513B75E17049A5AA478F9D</key>
+		<key>63D234F04C27497EBF4F1090</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8DE73E09677C4D48AC46BA4E</key>
+		<key>675CB8A5A1AC4BA79B823890</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D1469155D67141C7A3E7D634</key>
+		<key>A6E38903B2BD4A4C9512AFC1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DEDFF81BFC3D4B5B8CF1F731</key>
+		<key>AEDDF3A0C0B54D13892E7BBC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B84311E8E3584B229ED02486</key>
 		<dict>
 			<key>primary</key>
 			<true/>
