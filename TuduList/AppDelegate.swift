@@ -43,16 +43,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Parse.setApplicationId(ParseAppID, clientKey: ParseClientKey)
         PFFacebookUtils.initializeFacebook()
         
-//        var testObj:PFObject = PFObject(className: "TestClass")
-//        testObj["name"] = "Bruno!"
-//        
-//        testObj.saveInBackgroundWithBlock { (success, error) -> Void in
-//            if success{
-//                println("Saved!")
-//            }else{
-//                println("There was problem :(")
-//            }
-//        }
+        
+        let navigationController:UINavigationController = self.window?.rootViewController as UINavigationController
+        let firstViewController:TuduItemsViewController = navigationController.viewControllers[0] as TuduItemsViewController
+        
+        firstViewController.managedObjectContext = self.managedObjectContext
         
         return true
     }

@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import CoreData
 
 protocol ItemDetailViewControllerDelegate{
     func didFinishEditingItem()
+    func didFinishSavingNewItem()
 }
 
 class ItemDetailViewController: UITableViewController {
@@ -23,29 +25,27 @@ class ItemDetailViewController: UITableViewController {
     @IBOutlet weak var remindMeLabel: UILabel!
     
     var delegate:ItemDetailViewControllerDelegate?
-    
-    var itemToEdit:PFObject?
+    var remindMeDate:NSDate?
+    var itemToEdit:TuduItem?
+    var managedObjectContext:NSManagedObjectContext!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.datePicker.addTarget(self, action: Selector("dateChanged:"), forControlEvents: UIControlEvents.ValueChanged)
+        self.datePicker.addTarget(self,
+                                action: Selector("dateChanged:"),
+                                forControlEvents: UIControlEvents.ValueChanged)
         
         if self.itemToEdit == nil{
             self.doneButton.enabled = false
             self.remindMeDate = NSDate()
             self.updateDateLabel()
-        }else{
-            let title:String = self.itemToEdit?["title"] as AnyObject? as String
-            let content:String = self.itemToEdit?["content"] as AnyObject? as String
-            let dueDate:NSDate = self.itemToEdit?["dueDate"] as AnyObject? as NSDate
-            let remindMe:Bool = self.itemToEdit?["remindme"] as AnyObject? as Bool
-            
-            self.titleText.text = title
-            self.contentText.text = content
-            self.remindMeDate = dueDate
-            self.remindmeSwitch.on = remindMe
-            self.datePicker.date = dueDate
+        }else if let tudu:TuduItem = self.itemToEdit{
+            self.navigationItem.title = "Edit Item"
+            self.titleText.text = tudu.title
+            self.contentText.text = tudu.content
+            self.remindMeDate = tudu.dueDate
+            self.remindmeSwitch.on = tudu.remindMe.boolValue
+            self.datePicker.date = tudu.dueDate
             self.updateDateLabel()
         }
     }
@@ -53,63 +53,36 @@ class ItemDetailViewController: UITableViewController {
     @IBAction func cancel(sender: UIBarButtonItem) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
-    
-    var tuduItem:PFObject?
-    var remindMeDate:NSDate?
 
     @IBAction func done(sender: AnyObject) {
         
         self.doneButton.enabled = false
         
+        //tuduItem to be inserted or modified
+        var tuduItem:TuduItem
+        
         //Will create a new TuduItem Object and save
         if self.itemToEdit == nil{
-            if self.titleText.text != ""{
-                MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-                let tuduItem:PFObject = PFObject(className: "TuduItem")
-                tuduItem["title"] = self.titleText.text
-                tuduItem["content"] = self.contentText.text
-                tuduItem["dueDate"] = self.remindMeDate
-                tuduItem["remindme"] = self.remindmeSwitch.on
-                tuduItem["user"] = PFUser.currentUser()
                 
-                tuduItem.saveInBackgroundWithBlock({ (success, error) -> Void in
-                    println("trying to save the object")
-                    if error == nil{
-                        println("Save Success!")
-                        MBProgressHUD.hideHUDForView(self.view, animated: true)
-                        self.delegate?.didFinishEditingItem()
-                        self.dismissViewControllerAnimated(true, completion:nil)
-                    }
-                    else{
-                        println("Ops!!! Error saving new Object!")
-                        MBProgressHUD.hideHUDForView(self.view, animated: true)
-                        //ALERT THE USER THAT THE SAVING METHOD DID NOT WORK
-                        self.showAlertViewWithTitle("Sorry...", message: "An error saving...", viewController: self)
-                    }
-                })
-            }
+                let ent = NSEntityDescription.entityForName("TuduItem", inManagedObjectContext: self.managedObjectContext)
+                tuduItem = TuduItem(entity: ent!, insertIntoManagedObjectContext: self.managedObjectContext)
+                tuduItem.title = self.titleText.text
+                tuduItem.content = self.contentText.text
+                tuduItem.dueDate = self.remindMeDate!
+                tuduItem.remindMe = NSNumber.numberWithBool(self.remindmeSwitch.on)
         }
         //will save modifications on itemToEdit
         else{
-            MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-            self.itemToEdit?["title"] = self.titleText.text
-            self.itemToEdit?["content"] = self.contentText.text
-            self.itemToEdit?["dueDate"] = self.remindMeDate
-            self.itemToEdit?["remindme"] = self.remindmeSwitch.on
-            
-            self.itemToEdit?.saveInBackgroundWithBlock({ (success, error) -> Void in
-                if error == nil{
-                    MBProgressHUD.hideHUDForView(self.view, animated: true)
-                    self.delegate?.didFinishEditingItem()
-                    self.dismissViewControllerAnimated(true, completion: nil)
-                }else{
-                    println("Ops!!! Error updating Object!")
-                    MBProgressHUD.hideHUDForView(self.view, animated: true)
-                    //ALERT THE USER THAT THE SAVING METHOD DID NOT WORK
-                    self.showAlertViewWithTitle("Sorry...", message: "An error updating...", viewController: self)
-                }
-            })
+            tuduItem = self.itemToEdit!
+            tuduItem.title = self.titleText.text
+            tuduItem.content = self.contentText.text
+            tuduItem.dueDate = self.remindMeDate!
+            tuduItem.remindMe = self.remindmeSwitch.on
         }
+        
+        self.managedObjectContext.save(nil)
+        self.delegate?.didFinishSavingNewItem()
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     

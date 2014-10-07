@@ -17,7 +17,7 @@ class TuduItem: NSManagedObject {
     @NSManaged var dueDate:NSDate
     @NSManaged var createdAt:NSDate
     @NSManaged var modifiedAt:NSDate
-    @NSManaged var remindMe:Bool
+    @NSManaged var remindMe:NSNumber
     
    
 }
