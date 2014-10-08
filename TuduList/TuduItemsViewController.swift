@@ -9,18 +9,39 @@
 import UIKit
 import CoreData
 
-class TuduItemsViewController: UITableViewController, LoginViewControllerDelegate,ItemDetailViewControllerDelegate {
+class TuduItemsViewController:  UITableViewController,
+                                LoginViewControllerDelegate,
+                                NSFetchedResultsControllerDelegate {
     
-    var tuduItems:Array<TuduItem> = Array<TuduItem>()
     var managedObjectContext:NSManagedObjectContext?
+    
+    //lazy initialization
+    lazy var fetchedResultsController:NSFetchedResultsController = {
+        let fetchRequest = NSFetchRequest()
+        let entity = NSEntityDescription.entityForName("TuduItem", inManagedObjectContext: self.managedObjectContext!)
+        fetchRequest.entity = entity
+        
+        //sorting objects
+        let sortDescriptor = NSSortDescriptor(key: "dueDate", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        fetchRequest.fetchBatchSize = 20
+        
+        let fetchedResultsController:NSFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext!, sectionNameKeyPath: nil, cacheName: "TuduItems")
+        
+        fetchedResultsController.delegate = self
+        
+        return fetchedResultsController
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         if PFUser.currentUser() == nil{
             //Show the screen to log in the user
-            showLoginScreen()
+            self.showLoginScreen()
         }else{
-            didFinishLogin()
+            //clear previews cache in memory
+            NSFetchedResultsController.deleteCacheWithName("TuduItems")
+            self.performFetch()
         }
     }
     
@@ -37,24 +58,15 @@ class TuduItemsViewController: UITableViewController, LoginViewControllerDelegat
 
     // MARK: - Table view data source
 
-//    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-//        // #warning Potentially incomplete method implementation.
-//        // Return the number of sections.
-//        return 1
-//    }
-
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete method implementation.
-        // Return the number of rows in the section.
-        return self.tuduItems.count
+        let sectionInfo:[AnyObject] = self.fetchedResultsController.sections!
+        return sectionInfo[section].numberOfObjects
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("ItemCell", forIndexPath: indexPath) as TuduListCell
-        let tuduItem:TuduItem = self.tuduItems[indexPath.row]
-        cell.titleLabel.text = tuduItem.title
-        self.configureLabelForDueDate(LabelToEdit: cell.dueDateLabel, dateToInsert: tuduItem.dueDate as NSDate)
+        self.configureCell(cell, atIndexPath: indexPath)
         return cell
     }
     
@@ -67,19 +79,23 @@ class TuduItemsViewController: UITableViewController, LoginViewControllerDelegat
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         
-        if editingStyle == UITableViewCellEditingStyle.Delete{
-            let tuduItem:TuduItem = self.tuduItems[indexPath.row]
-            MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-            self.tuduItems.removeAtIndex(indexPath.row)
-            
+        
+        switch editingStyle{
+        case .Delete:
+            let tuduItem:TuduItem = self.fetchedResultsController.objectAtIndexPath(indexPath) as TuduItem
+            self.managedObjectContext?.deleteObject(tuduItem)
+        
+        default:
+            println("Default...")
         }
+        
     }
         
 
     // MARK: - Table View Delegate
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        let tuduItem:TuduItem = self.tuduItems[indexPath.row]
+        let tuduItem:TuduItem = self.fetchedResultsController.objectAtIndexPath(indexPath) as TuduItem
         self.performSegueWithIdentifier("EditItem", sender: tuduItem)
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
@@ -95,7 +111,6 @@ class TuduItemsViewController: UITableViewController, LoginViewControllerDelegat
             let tuduItem:TuduItem = sender as TuduItem
             let navigationController:UINavigationController = segue.destinationViewController as UINavigationController
             let itemDetailViewController:ItemDetailViewController = navigationController.topViewController as ItemDetailViewController
-            itemDetailViewController.delegate = self
             itemDetailViewController.title = "Edit Item"
             itemDetailViewController.itemToEdit = tuduItem
             itemDetailViewController.managedObjectContext = self.managedObjectContext
@@ -104,7 +119,6 @@ class TuduItemsViewController: UITableViewController, LoginViewControllerDelegat
             println("AddItem!")
             let navigationController:UINavigationController = segue.destinationViewController as UINavigationController
             let itemDetailViewController:ItemDetailViewController = navigationController.topViewController as ItemDetailViewController
-            itemDetailViewController.delegate = self
             itemDetailViewController.managedObjectContext = self.managedObjectContext
         }
         else if segue.identifier == "LoginScreen"{
@@ -132,22 +146,19 @@ class TuduItemsViewController: UITableViewController, LoginViewControllerDelegat
     
     func didFinishSavingNewItem() {
         //reload TuduItems from the Database
-        self.loadDataFromDatabase()
     }
     
     
     override func viewWillAppear(animated: Bool) {
-        if self.tuduItems.isEmpty{
-            
-        }
     }
     
+    //MARK - Auxiliar Functions
     func didFinishLogin(){
-        
-        self.loadDataFromDatabase()
-        
         //load objects from CoreData Store
+        self.performFetch()
         
+        
+        //load objects from Parse
 //        let query:PFQuery = PFQuery(className: "TuduItem")
 //        query.whereKey("user", equalTo:PFUser.currentUser())
 //        query.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
@@ -168,34 +179,79 @@ class TuduItemsViewController: UITableViewController, LoginViewControllerDelegat
         self.performSegueWithIdentifier("LoginScreen", sender: self)
     }
     
-    //MARK - Configure label for due date
     func configureLabelForDueDate(LabelToEdit label:UILabel, dateToInsert date:NSDate) ->Void{
         let formatter:NSDateFormatter = NSDateFormatter()
         formatter.dateFormat = "h:mm a '-' MM/dd/YY"
         label.text = formatter.stringFromDate(date)
     }
     
-    //MARK - TuduListCell Button Function
+    //TuduListCell Button Function to perform the edit action
     func editTuduItem(buttonClicked button:UIButton) ->Void{
         
     }
     
-    func loadDataFromDatabase() ->Void{
-        let fetchRequest = NSFetchRequest()
-        let entity = NSEntityDescription.entityForName("TuduItem", inManagedObjectContext: self.managedObjectContext!)
-        fetchRequest.entity = entity
+    //load data from CoreData
+    func performFetch() -> Void{
+        self.fetchedResultsController.performFetch(nil)
+    }
+    
+    func configureCell(cell:TuduListCell, atIndexPath indexPath:NSIndexPath) -> Void{
+        let tuduItem:TuduItem = self.fetchedResultsController.objectAtIndexPath(indexPath) as TuduItem
+        cell.titleLabel.text = tuduItem.title
+        self.configureLabelForDueDate(LabelToEdit: cell.dueDateLabel, dateToInsert: tuduItem.dueDate as NSDate)
+    }
+    
+    //MARK - NSFetchedResultsControllerDelegate
+    func controllerWillChangeContent(controller: NSFetchedResultsController) {
+        self.tableView.beginUpdates()
+    }
+    
+    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath) {
         
-        //sorting objects
-        let sortDescriptor = NSSortDescriptor(key: "dueDate", ascending: true)
-        fetchRequest.sortDescriptors = [sortDescriptor]
+        switch type{
+        case .Insert:
+            NSLog("NSFetchedResultsChangeInsert (object)")
+            self.tableView.insertRowsAtIndexPaths([newIndexPath] as [AnyObject], withRowAnimation: .Fade)
         
-        let foundObjects = self.managedObjectContext?.executeFetchRequest(fetchRequest, error: nil)
+        case .Delete:
+            self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation:.Fade)
+            
+        case .Update:
+            var cell = self.tableView.cellForRowAtIndexPath(indexPath) as TuduListCell
+            self.configureCell(cell, atIndexPath: indexPath)
         
-        let convertedObjects:Array<TuduItem> = foundObjects as Array<TuduItem>
+        case .Move:
+            self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            self.tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
         
-        self.tuduItems = convertedObjects
+        default:
+            println("Default... No operations...")
+        }
         
-        self.tableView.reloadData()
+    }
+    
+    func controller(controller: NSFetchedResultsController, didChangeSection sectionInfo: NSFetchedResultsSectionInfo, atIndex sectionIndex: Int, forChangeType type: NSFetchedResultsChangeType) {
+        switch type{
+        
+        case .Insert:
+            self.tableView.insertSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Fade)
+        
+        case .Delete:
+            self.tableView.deleteSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Fade)
+            
+        default:
+            println("Default... No operations...")
+        }
+    }
+    
+    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+        self.tableView.endUpdates()
+    }
+    
+    
+    //new Dealoc method (Swift...)
+    deinit{
+        self.fetchedResultsController.delegate = nil
     }
 
 }

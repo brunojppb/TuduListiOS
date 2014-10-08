@@ -9,10 +9,6 @@
 import UIKit
 import CoreData
 
-protocol ItemDetailViewControllerDelegate{
-    func didFinishEditingItem()
-    func didFinishSavingNewItem()
-}
 
 class ItemDetailViewController: UITableViewController {
     
@@ -24,7 +20,6 @@ class ItemDetailViewController: UITableViewController {
     @IBOutlet weak var doneButton: UIBarButtonItem!
     @IBOutlet weak var remindMeLabel: UILabel!
     
-    var delegate:ItemDetailViewControllerDelegate?
     var remindMeDate:NSDate?
     var itemToEdit:TuduItem?
     var managedObjectContext:NSManagedObjectContext!
@@ -55,6 +50,13 @@ class ItemDetailViewController: UITableViewController {
     }
 
     @IBAction func done(sender: AnyObject) {
+        self.titleText.becomeFirstResponder()
+        self.titleText.resignFirstResponder()
+        
+        let viewToShow = self.navigationController?.view
+        
+        let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        hud.mode = MBProgressHUDModeText
         
         self.doneButton.enabled = false
         
@@ -63,16 +65,17 @@ class ItemDetailViewController: UITableViewController {
         
         //Will create a new TuduItem Object and save
         if self.itemToEdit == nil{
-                
-                let ent = NSEntityDescription.entityForName("TuduItem", inManagedObjectContext: self.managedObjectContext)
-                tuduItem = TuduItem(entity: ent!, insertIntoManagedObjectContext: self.managedObjectContext)
-                tuduItem.title = self.titleText.text
-                tuduItem.content = self.contentText.text
-                tuduItem.dueDate = self.remindMeDate!
-                tuduItem.remindMe = NSNumber.numberWithBool(self.remindmeSwitch.on)
+            hud.labelText = "Saved"
+            let ent = NSEntityDescription.entityForName("TuduItem", inManagedObjectContext: self.managedObjectContext)
+            tuduItem = TuduItem(entity: ent!, insertIntoManagedObjectContext: self.managedObjectContext)
+            tuduItem.title = self.titleText.text
+            tuduItem.content = self.contentText.text
+            tuduItem.dueDate = self.remindMeDate!
+            tuduItem.remindMe = NSNumber.numberWithBool(self.remindmeSwitch.on)
         }
         //will save modifications on itemToEdit
         else{
+            hud.labelText = "Updated"
             tuduItem = self.itemToEdit!
             tuduItem.title = self.titleText.text
             tuduItem.content = self.contentText.text
@@ -81,8 +84,9 @@ class ItemDetailViewController: UITableViewController {
         }
         
         self.managedObjectContext.save(nil)
-        self.delegate?.didFinishSavingNewItem()
-        self.dismissViewControllerAnimated(true, completion: nil)
+        
+        var performCloseScreen = NSTimer.scheduledTimerWithTimeInterval(0.6, target: self, selector: Selector("closeScreen"), userInfo: nil, repeats: false)
+        
     }
     
     
@@ -144,7 +148,13 @@ class ItemDetailViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
+        self.titleText.becomeFirstResponder()
+        self.titleText.resignFirstResponder()
         return nil
+    }
+    
+    func closeScreen() -> Void{
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
 
     // MARK: - Navigation
