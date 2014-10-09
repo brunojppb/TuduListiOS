@@ -72,7 +72,6 @@ class ItemDetailViewController: UITableViewController {
             tuduItem.content = self.contentText.text
             tuduItem.dueDate = self.remindMeDate!
             tuduItem.remindMe = NSNumber.numberWithBool(self.remindmeSwitch.on)
-            self.scheduleNotification(itemToSchedule: tuduItem)
         }
         //will save modifications on itemToEdit
         else{
@@ -86,6 +85,7 @@ class ItemDetailViewController: UITableViewController {
         
         tuduItem.checked = NSNumber.numberWithBool(false)
         self.managedObjectContext.save(nil)
+        self.scheduleNotification(itemToSchedule: tuduItem)
         
         var performCloseScreen = NSTimer.scheduledTimerWithTimeInterval(0.6, target: self, selector: Selector("closeScreen"), userInfo: nil, repeats: false)
         
@@ -160,6 +160,13 @@ class ItemDetailViewController: UITableViewController {
     }
     
     func scheduleNotification(itemToSchedule item:TuduItem) -> Void{
+        
+        let existingNotification = item.notificationForThisItem()
+        if let notification = existingNotification{
+            UIApplication.sharedApplication().cancelLocalNotification(notification)
+            println("Notification removed...")
+        }
+        
         if self.remindmeSwitch.on && self.remindMeDate?.compare(NSDate()) != NSComparisonResult.OrderedAscending{
             let localNotification = UILocalNotification()
             localNotification.fireDate = item.dueDate
