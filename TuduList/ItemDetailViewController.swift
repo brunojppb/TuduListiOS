@@ -72,6 +72,7 @@ class ItemDetailViewController: UITableViewController {
             tuduItem.content = self.contentText.text
             tuduItem.dueDate = self.remindMeDate!
             tuduItem.remindMe = NSNumber.numberWithBool(self.remindmeSwitch.on)
+            self.scheduleNotification(itemToSchedule: tuduItem)
         }
         //will save modifications on itemToEdit
         else{
@@ -80,9 +81,10 @@ class ItemDetailViewController: UITableViewController {
             tuduItem.title = self.titleText.text
             tuduItem.content = self.contentText.text
             tuduItem.dueDate = self.remindMeDate!
-            tuduItem.remindMe = self.remindmeSwitch.on
+            tuduItem.remindMe = NSNumber.numberWithBool(self.remindmeSwitch.on)
         }
         
+        tuduItem.checked = NSNumber.numberWithBool(false)
         self.managedObjectContext.save(nil)
         
         var performCloseScreen = NSTimer.scheduledTimerWithTimeInterval(0.6, target: self, selector: Selector("closeScreen"), userInfo: nil, repeats: false)
@@ -155,6 +157,19 @@ class ItemDetailViewController: UITableViewController {
     
     func closeScreen() -> Void{
         self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func scheduleNotification(itemToSchedule item:TuduItem) -> Void{
+        if self.remindmeSwitch.on && self.remindMeDate?.compare(NSDate()) != NSComparisonResult.OrderedAscending{
+            let localNotification = UILocalNotification()
+            localNotification.fireDate = item.dueDate
+            localNotification.timeZone = NSTimeZone.defaultTimeZone()
+            localNotification.alertBody = item.title
+            localNotification.soundName = UILocalNotificationDefaultSoundName
+            let itemID = item.objectID.URIRepresentation().absoluteString
+            localNotification.userInfo = ["itemID": itemID!]
+            UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
+        }
     }
 
     // MARK: - Navigation

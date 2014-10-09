@@ -49,11 +49,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         firstViewController.managedObjectContext = self.managedObjectContext
         
+        //configure local notifications
+        let notificationSettings = UIUserNotificationSettings(forTypes: .Alert | .Sound, categories: nil)
+        UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
+        
         return true
     }
     
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String, annotation: AnyObject?) -> Bool {
         return FBAppCall.handleOpenURL(url, sourceApplication: sourceApplication, withSession: PFFacebookUtils.session())
+    }
+    
+    func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
+        println("DidReceiveNotification caled: \(notification)")
     }
     
     func applicationDidBecomeActive(application: UIApplication) {

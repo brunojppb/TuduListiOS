@@ -15,6 +15,7 @@ class TuduListCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dueDateLabel: UILabel!
     @IBOutlet weak var editButton: UIButton!
+    @IBOutlet weak var checkedImage: UIImageView!
     
 
     override func awakeFromNib() {

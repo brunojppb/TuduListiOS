@@ -116,7 +116,6 @@
 			children = (
 				92CA6F0B19E4A84A003E9B5A /* CustomViews */,
 				928CF1B219E34D810070FD29 /* DataModel */,
-				92DA4BB819E34A3F00F3090F /* Models */,
 				926F509519B77F9A00A55D8B /* CustomCells */,
 				926F509219B77F7100A55D8B /* Controllers */,
 				9200A83D19B7657000971EE7 /* BridgeFile */,
@@ -186,13 +185,6 @@
 				92CA6F0C19E4AA27003E9B5A /* HUDView.swift */,
 			);
 			name = CustomViews;
-			sourceTree = "<group>";
-		};
-		92DA4BB819E34A3F00F3090F /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -35,13 +35,10 @@ class TuduItemsViewController:  UITableViewController,
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.performFetch()
         if PFUser.currentUser() == nil{
             //Show the screen to log in the user
             self.showLoginScreen()
-        }else{
-            //clear previews cache in memory
-            NSFetchedResultsController.deleteCacheWithName("TuduItems")
-            self.performFetch()
         }
     }
     
@@ -59,8 +56,28 @@ class TuduItemsViewController:  UITableViewController,
     // MARK: - Table view data source
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let sectionInfo:[AnyObject] = self.fetchedResultsController.sections!
-        return sectionInfo[section].numberOfObjects
+        if let sectionInfo:[AnyObject] = self.fetchedResultsController.fetchedObjects{
+            if sectionInfo.count > 0{
+                self.tableView.separatorStyle = .SingleLine
+                self.tableView.backgroundView = UIView()
+                return sectionInfo.count
+            }
+            else{
+                let rect = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)
+                let label = UILabel(frame: rect)
+                label.text = "No data..."
+                label.textColor = UIColor.blackColor()
+                label.numberOfLines = 0;
+                label.textAlignment = NSTextAlignment.Center
+                label.font = UIFont(name: "Palatino-Italic", size: 20)
+                label.sizeToFit()
+                
+                self.tableView.backgroundView = label
+                self.tableView.separatorStyle = .None
+            }
+        }
+        
+        return 0
     }
 
     
@@ -71,6 +88,9 @@ class TuduItemsViewController:  UITableViewController,
     }
     
     
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
     
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         return true;
@@ -84,7 +104,8 @@ class TuduItemsViewController:  UITableViewController,
         case .Delete:
             let tuduItem:TuduItem = self.fetchedResultsController.objectAtIndexPath(indexPath) as TuduItem
             self.managedObjectContext?.deleteObject(tuduItem)
-        
+            self.managedObjectContext?.save(nil)
+            
         default:
             println("Default...")
         }
@@ -94,11 +115,13 @@ class TuduItemsViewController:  UITableViewController,
 
     // MARK: - Table View Delegate
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let cell:TuduListCell = self.tableView.cellForRowAtIndexPath(indexPath) as TuduListCell
+        let tuduItem = self.fetchedResultsController.objectAtIndexPath(indexPath) as TuduItem
+        tuduItem.checked = !NSNumber.numberWithBool(tuduItem.checked)
+        cell.checkedImage.hidden = tuduItem.checked.boolValue
+        self.managedObjectContext?.save(nil)
         
-        let tuduItem:TuduItem = self.fetchedResultsController.objectAtIndexPath(indexPath) as TuduItem
-        self.performSegueWithIdentifier("EditItem", sender: tuduItem)
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        
     }
     
 
@@ -129,50 +152,13 @@ class TuduItemsViewController:  UITableViewController,
     }
     
     
-    //MARK - Internet Reachability
-//    func checkInternetConnection(){
-//        reachbility = AFNetworkReachabilityManager(forDomain: "www.parse.com")
-//        reachbility?.setReachabilityStatusChangeBlock { (status) -> Void in
-//            let statusString:String = AFStringFromNetworkReachabilityStatus(status)
-//            println("Reachability: \(statusString)")
-//        }
-//        reachbility?.startMonitoring()
-//    }
-    
-    // MARK: - ItemDetailViewControllerDelegate
-    func didFinishEditingItem() {
-        //reload item from database
-    }
-    
-    func didFinishSavingNewItem() {
-        //reload TuduItems from the Database
-    }
-    
-    
     override func viewWillAppear(animated: Bool) {
     }
     
-    //MARK - Auxiliar Functions
+    //MARK: - Auxiliar Functions
     func didFinishLogin(){
         //load objects from CoreData Store
         self.performFetch()
-        
-        
-        //load objects from Parse
-//        let query:PFQuery = PFQuery(className: "TuduItem")
-//        query.whereKey("user", equalTo:PFUser.currentUser())
-//        query.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
-//            if error == nil{
-//                println("Query works!!")
-//                self.tuduItems.removeAll(keepCapacity: false)
-//                if let items = objects as? [PFObject]{
-//                    for item in items{
-//                        self.tuduItems.append(item)
-//                    }
-//                    self.tableView.reloadData()
-//                }
-//            }
-//        }
     }
     
     func showLoginScreen() ->Void{
@@ -186,22 +172,30 @@ class TuduItemsViewController:  UITableViewController,
     }
     
     //TuduListCell Button Function to perform the edit action
-    func editTuduItem(buttonClicked button:UIButton) ->Void{
-        
+    func editTuduItem(sender:AnyObject) ->Void{
+        let index = (sender as UIButton).tag
+        let tuduItemList = self.fetchedResultsController.fetchedObjects
+        let tuduItem = tuduItemList?[index] as TuduItem
+        self.performSegueWithIdentifier("EditItem", sender: tuduItem)
     }
     
     //load data from CoreData
     func performFetch() -> Void{
+        //clear previews cache in memory
+        NSFetchedResultsController.deleteCacheWithName("TuduItems")
         self.fetchedResultsController.performFetch(nil)
     }
     
     func configureCell(cell:TuduListCell, atIndexPath indexPath:NSIndexPath) -> Void{
         let tuduItem:TuduItem = self.fetchedResultsController.objectAtIndexPath(indexPath) as TuduItem
         cell.titleLabel.text = tuduItem.title
+        cell.checkedImage.hidden = !tuduItem.checked.boolValue
+        cell.editButton.tag = indexPath.row
+        cell.editButton.addTarget(self, action: Selector("editTuduItem:"), forControlEvents: UIControlEvents.TouchUpInside)
         self.configureLabelForDueDate(LabelToEdit: cell.dueDateLabel, dateToInsert: tuduItem.dueDate as NSDate)
     }
     
-    //MARK - NSFetchedResultsControllerDelegate
+    //MARK: - NSFetchedResultsControllerDelegate
     func controllerWillChangeContent(controller: NSFetchedResultsController) {
         self.tableView.beginUpdates()
     }
@@ -210,7 +204,6 @@ class TuduItemsViewController:  UITableViewController,
         
         switch type{
         case .Insert:
-            NSLog("NSFetchedResultsChangeInsert (object)")
             self.tableView.insertRowsAtIndexPaths([newIndexPath] as [AnyObject], withRowAnimation: .Fade)
         
         case .Delete:
@@ -253,12 +246,39 @@ class TuduItemsViewController:  UITableViewController,
     deinit{
         self.fetchedResultsController.delegate = nil
     }
+    
+    //MARK - Internet Reachability
+    //    func checkInternetConnection(){
+    //        reachbility = AFNetworkReachabilityManager(forDomain: "www.parse.com")
+    //        reachbility?.setReachabilityStatusChangeBlock { (status) -> Void in
+    //            let statusString:String = AFStringFromNetworkReachabilityStatus(status)
+    //            println("Reachability: \(statusString)")
+    //        }
+    //        reachbility?.startMonitoring()
+    //    }
+    
+    //INSIDE a FUNCTION
+    //load objects from Parse
+    //        let query:PFQuery = PFQuery(className: "TuduItem")
+    //        query.whereKey("user", equalTo:PFUser.currentUser())
+    //        query.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
+    //            if error == nil{
+    //                println("Query works!!")
+    //                self.tuduItems.removeAll(keepCapacity: false)
+    //                if let items = objects as? [PFObject]{
+    //                    for item in items{
+    //                        self.tuduItems.append(item)
+    //                    }
+    //                    self.tableView.reloadData()
+    //                }
+    //            }
+    //        }
 
 }
 
 
 
-
+   
 
 
 

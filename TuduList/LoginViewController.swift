@@ -43,6 +43,7 @@ class LoginViewController: UIViewController {
         let permissions:[String] = ["user_about_me", "user_relationships", "user_birthday", "user_location"]
         
         //Login PFUser using Facebook
+        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
         PFFacebookUtils.logInWithPermissions(permissions) { (user, error) -> Void in
             if user == nil{
                 var errorMessage:String
@@ -63,7 +64,7 @@ class LoginViewController: UIViewController {
                 }else{
                     println("User with facebook Logged in")
                 }
-                
+                MBProgressHUD.hideHUDForView(self.view, animated: true)
                 self.delegate?.didFinishLogin()
                 self.dismissViewControllerAnimated(true, completion: nil)
             }

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6206.9" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="H2E-f9-XiO">
     <dependencies>
-        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7026.1"/>
         <capability name="Constraints with attributes relative to the layout margin" minToolsVersion="6.0"/>
     </dependencies>
@@ -10,65 +9,72 @@
         <scene sceneID="WXJ-en-bVH">
             <objects>
                 <tableViewController id="TM6-0s-TDX" customClass="TuduItemsViewController" customModule="TuduList" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="78" sectionHeaderHeight="10" sectionFooterHeight="10" id="LUM-xV-A5j">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="78" sectionHeaderHeight="22" sectionFooterHeight="22" id="LUM-xV-A5j">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Search" id="x1I-h5-fTx">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <textInputTraits key="textInputTraits"/>
-                        </searchBar>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ItemCell" rowHeight="78" id="nLA-dh-2Ui" customClass="TuduListCell" customModule="TuduList" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nLA-dh-2Ui" id="qyg-6B-A0o">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Umh-ML-Y96">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Umh-ML-Y96">
                                             <rect key="frame" x="285" y="25" width="27" height="27"/>
                                             <constraints>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="27" id="Qw1-7L-GeY"/>
                                                 <constraint firstAttribute="width" constant="27" id="UbU-gF-gsa"/>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="27" id="srx-XU-euc"/>
                                                 <constraint firstAttribute="height" constant="27" id="wvG-2c-2cf"/>
                                             </constraints>
-                                            <state key="normal" image="edit-button">
-                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
+                                            <state key="normal" image="edit-button"/>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TuduList Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9HK-Ye-hTb">
-                                            <rect key="frame" x="15" y="14" width="262" height="20.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <rect key="frame" x="15" y="13" width="262" height="20.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="20.5" id="BA9-gv-EOa"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="KhmerSangamMN" family="Khmer Sangam MN" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock" translatesAutoresizingMaskIntoConstraints="NO" id="vGq-UY-mSr">
-                                            <rect key="frame" x="15" y="46" width="27" height="28"/>
-                                        </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8VY-7x-iNG">
-                                            <rect key="frame" x="50" y="51" width="196" height="17"/>
+                                            <rect key="frame" x="50" y="58" width="196" height="17"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="17" id="aLu-r0-DLd"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <fontDescription key="fontDescription" name="KhmerSangamMN" family="Khmer Sangam MN" pointSize="14"/>
                                             <color key="textColor" red="0.96474255180000001" green="0.60533769339999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fYL-Ds-Gve">
+                                            <rect key="frame" x="15" y="42" width="27" height="28"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="27" id="3ve-7a-ZbE"/>
+                                                <constraint firstAttribute="height" constant="28" id="wuS-X7-zqb"/>
+                                            </constraints>
+                                            <state key="normal" image="calendar"/>
+                                        </button>
+                                        <imageView hidden="YES" userInteractionEnabled="NO" alpha="0.24999999999999967" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="checkmark" translatesAutoresizingMaskIntoConstraints="NO" id="kfW-qN-2Hv">
+                                            <rect key="frame" x="128" y="4" width="64" height="64"/>
+                                        </imageView>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstAttribute="bottomMargin" secondItem="8VY-7x-iNG" secondAttribute="bottom" constant="-5.5" id="1v2-oX-OOc"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="8VY-7x-iNG" secondAttribute="trailing" constant="66" id="57E-CO-smQ"/>
                                         <constraint firstItem="9HK-Ye-hTb" firstAttribute="leading" secondItem="qyg-6B-A0o" secondAttribute="leadingMargin" constant="7" id="F1v-Hd-0xx"/>
                                         <constraint firstItem="8VY-7x-iNG" firstAttribute="leading" secondItem="qyg-6B-A0o" secondAttribute="leadingMargin" constant="42" id="Gfs-yQ-9Wd"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="8VY-7x-iNG" secondAttribute="bottom" constant="1.5" id="Ikm-EY-uUN"/>
                                         <constraint firstItem="Umh-ML-Y96" firstAttribute="leading" secondItem="9HK-Ye-hTb" secondAttribute="trailing" constant="8" id="LKf-41-gh8"/>
-                                        <constraint firstItem="vGq-UY-mSr" firstAttribute="leading" secondItem="qyg-6B-A0o" secondAttribute="leadingMargin" constant="7" id="Lfn-JD-n1b"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="vGq-UY-mSr" secondAttribute="bottom" constant="-4.5" id="QyJ-Qg-mdx"/>
+                                        <constraint firstItem="9HK-Ye-hTb" firstAttribute="top" secondItem="qyg-6B-A0o" secondAttribute="topMargin" constant="5" id="NC9-ol-9mR"/>
                                         <constraint firstItem="Umh-ML-Y96" firstAttribute="top" secondItem="qyg-6B-A0o" secondAttribute="topMargin" constant="17" id="Xj0-Rw-jFg"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="Umh-ML-Y96" secondAttribute="bottom" constant="17.5" id="a29-aL-wQ5"/>
-                                        <constraint firstItem="9HK-Ye-hTb" firstAttribute="top" secondItem="qyg-6B-A0o" secondAttribute="topMargin" constant="6" id="nOi-4I-epM"/>
+                                        <constraint firstItem="fYL-Ds-Gve" firstAttribute="leading" secondItem="qyg-6B-A0o" secondAttribute="leadingMargin" constant="7" id="gov-WA-pJB"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="fYL-Ds-Gve" secondAttribute="bottom" constant="-0.5" id="u4E-zQ-T9O"/>
                                         <constraint firstItem="Umh-ML-Y96" firstAttribute="trailing" secondItem="qyg-6B-A0o" secondAttribute="trailingMargin" id="xGr-Ob-HLQ"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="checkedImage" destination="kfW-qN-2Hv" id="Icm-bv-iJF"/>
                                     <outlet property="dueDateLabel" destination="8VY-7x-iNG" id="prJ-SK-2hf"/>
                                     <outlet property="editButton" destination="Umh-ML-Y96" id="I9D-6V-r1o"/>
                                     <outlet property="titleLabel" destination="9HK-Ye-hTb" id="vWR-gl-zey"/>
@@ -82,7 +88,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="TuduList" id="0S4-Ki-JbF">
-                        <barButtonItem key="leftBarButtonItem" image="sync-button" id="XEX-sF-EpH"/>
+                        <barButtonItem key="leftBarButtonItem" image="cloud-button" id="XEX-sF-EpH"/>
                         <barButtonItem key="rightBarButtonItem" image="add-button" style="done" id="AHV-hK-Fix">
                             <connections>
                                 <segue destination="dnw-7A-kOP" kind="modal" identifier="AddItem" id="hWg-da-HcW"/>
@@ -341,12 +347,13 @@
     </scenes>
     <resources>
         <image name="add-button" width="22" height="22"/>
+        <image name="calendar" width="27" height="28"/>
         <image name="cancel-button" width="19" height="20"/>
-        <image name="clock" width="27" height="28"/>
+        <image name="checkmark" width="64" height="64"/>
+        <image name="cloud-button" width="27" height="18"/>
         <image name="edit-button" width="27" height="27"/>
         <image name="facebook-login-button" width="356" height="76"/>
         <image name="save-button" width="27" height="27"/>
-        <image name="sync-button" width="27" height="27"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
