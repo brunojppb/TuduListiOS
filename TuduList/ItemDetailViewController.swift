@@ -71,7 +71,7 @@ class ItemDetailViewController: UITableViewController {
             tuduItem.title = self.titleText.text
             tuduItem.content = self.contentText.text
             tuduItem.dueDate = self.remindMeDate!
-            tuduItem.remindMe = NSNumber.numberWithBool(self.remindmeSwitch.on)
+            tuduItem.remindMe = NSNumber(bool: self.remindmeSwitch.on)
         }
         //will save modifications on itemToEdit
         else{
@@ -80,10 +80,10 @@ class ItemDetailViewController: UITableViewController {
             tuduItem.title = self.titleText.text
             tuduItem.content = self.contentText.text
             tuduItem.dueDate = self.remindMeDate!
-            tuduItem.remindMe = NSNumber.numberWithBool(self.remindmeSwitch.on)
+            tuduItem.remindMe = NSNumber(bool: self.remindmeSwitch.on)
         }
         
-        tuduItem.checked = NSNumber.numberWithBool(false)
+        tuduItem.checked = NSNumber(bool: false)
         self.managedObjectContext.save(nil)
         self.scheduleNotification(itemToSchedule: tuduItem)
         

@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let modelURL = NSBundle.mainBundle().URLForResource("DataModel", withExtension: "momd")
         let mom = NSManagedObjectModel(contentsOfURL: modelURL!)
         
-        let psc = NSPersistentStoreCoordinator(managedObjectModel: mom)
+        let psc = NSPersistentStoreCoordinator(managedObjectModel: mom!)
         
         let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
         let storeURL = (urls[urls.endIndex-1]).URLByAppendingPathComponent("DataStore.sqlite")

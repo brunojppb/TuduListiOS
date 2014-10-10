@@ -19,7 +19,6 @@
 		928CF1BA19E3644F0070FD29 /* TuduItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928CF1B919E3644F0070FD29 /* TuduItem.swift */; };
 		92A8717419E327AB00E00807 /* TuduListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A8717319E327AB00E00807 /* TuduListCell.swift */; };
 		92B309EF19BA59A000ECC076 /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B309EE19BA59A000ECC076 /* ItemDetailViewController.swift */; };
-		92CA6F0D19E4AA27003E9B5A /* HUDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CA6F0C19E4AA27003E9B5A /* HUDView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,7 +50,6 @@
 		928CF1B919E3644F0070FD29 /* TuduItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TuduItem.swift; sourceTree = "<group>"; };
 		92A8717319E327AB00E00807 /* TuduListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TuduListCell.swift; sourceTree = "<group>"; };
 		92B309EE19BA59A000ECC076 /* ItemDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemDetailViewController.swift; sourceTree = "<group>"; };
-		92CA6F0C19E4AA27003E9B5A /* HUDView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUDView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,7 +112,6 @@
 		926C749619B763A500FD2A97 /* TuduList */ = {
 			isa = PBXGroup;
 			children = (
-				92CA6F0B19E4A84A003E9B5A /* CustomViews */,
 				928CF1B219E34D810070FD29 /* DataModel */,
 				926F509519B77F9A00A55D8B /* CustomCells */,
 				926F509219B77F7100A55D8B /* Controllers */,
@@ -177,14 +174,6 @@
 				928CF1B919E3644F0070FD29 /* TuduItem.swift */,
 			);
 			name = DataModel;
-			sourceTree = "<group>";
-		};
-		92CA6F0B19E4A84A003E9B5A /* CustomViews */ = {
-			isa = PBXGroup;
-			children = (
-				92CA6F0C19E4AA27003E9B5A /* HUDView.swift */,
-			);
-			name = CustomViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -325,7 +314,6 @@
 				928CF1BA19E3644F0070FD29 /* TuduItem.swift in Sources */,
 				926C749C19B763A500FD2A97 /* LoginViewController.swift in Sources */,
 				926C749A19B763A500FD2A97 /* AppDelegate.swift in Sources */,
-				92CA6F0D19E4AA27003E9B5A /* HUDView.swift in Sources */,
 				928CF1B519E34D930070FD29 /* DataModel.xcdatamodeld in Sources */,
 				92A8717419E327AB00E00807 /* TuduListCell.swift in Sources */,
 				92668E3519BA2F6500234DDD /* TuduItemsViewController.swift in Sources */,

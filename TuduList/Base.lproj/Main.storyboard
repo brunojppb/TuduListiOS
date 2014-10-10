@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6206.9" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="H2E-f9-XiO">
     <dependencies>
+        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7026.1"/>
         <capability name="Constraints with attributes relative to the layout margin" minToolsVersion="6.0"/>
     </dependencies>
@@ -114,13 +115,13 @@
                         <sections>
                             <tableViewSection id="JPo-et-yEn">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="54" id="b2S-A6-ZOi">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="37" id="b2S-A6-ZOi">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="b2S-A6-ZOi" id="FPI-yk-3HR">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fTp-eg-Oeq">
-                                                    <rect key="frame" x="8" y="13" width="304" height="30"/>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fTp-eg-Oeq">
+                                                    <rect key="frame" x="8" y="5" width="304" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                     <connections>
@@ -128,19 +129,31 @@
                                                     </connections>
                                                 </textField>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="fTp-eg-Oeq" firstAttribute="trailing" secondItem="FPI-yk-3HR" secondAttribute="trailingMargin" id="PZ8-Us-5dH"/>
+                                                <constraint firstItem="fTp-eg-Oeq" firstAttribute="leading" secondItem="FPI-yk-3HR" secondAttribute="leadingMargin" id="bZA-dQ-j4r"/>
+                                                <constraint firstAttribute="centerX" secondItem="fTp-eg-Oeq" secondAttribute="centerX" id="qc5-Fl-OF0"/>
+                                                <constraint firstAttribute="centerY" secondItem="fTp-eg-Oeq" secondAttribute="centerY" constant="-1.75" id="y0b-u0-5H3"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="54" id="ejc-J2-dS6">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="37" id="ejc-J2-dS6">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ejc-J2-dS6" id="p0R-Ul-i5i">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Content" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="D1K-Hi-1Cx">
-                                                    <rect key="frame" x="8" y="13" width="304" height="30"/>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Content" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="D1K-Hi-1Cx">
+                                                    <rect key="frame" x="8" y="3" width="304" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="centerX" secondItem="D1K-Hi-1Cx" secondAttribute="centerX" id="GsU-In-F43"/>
+                                                <constraint firstItem="D1K-Hi-1Cx" firstAttribute="leading" secondItem="p0R-Ul-i5i" secondAttribute="leadingMargin" id="fxn-uC-bjm"/>
+                                                <constraint firstItem="D1K-Hi-1Cx" firstAttribute="trailing" secondItem="p0R-Ul-i5i" secondAttribute="trailingMargin" id="hsd-kr-xBN"/>
+                                                <constraint firstAttribute="centerY" secondItem="D1K-Hi-1Cx" secondAttribute="centerY" constant="0.25" id="vZH-lP-izJ"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="djl-KE-u0p" detailTextLabel="xwd-nv-eA8" rowHeight="54" style="IBUITableViewCellStyleValue1" id="z4j-0L-bBK">
@@ -241,40 +254,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="E-mail" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zmk-ug-H0l">
-                                <rect key="frame" x="16" y="74" width="288" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rqZ-yU-PeO">
-                                <rect key="frame" x="16" y="124" width="288" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DCO-34-vN0">
-                                <rect key="frame" x="16" y="183" width="140" height="33"/>
-                                <state key="normal" title="Log in">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="login:" destination="USU-aw-dVj" eventType="touchUpInside" id="aEt-rM-gsH"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MoG-On-grd">
-                                <rect key="frame" x="164" y="183" width="140" height="33"/>
-                                <state key="normal" title="Sign up">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="signUp:" destination="USU-aw-dVj" eventType="touchUpInside" id="iy2-fA-IDm"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rtS-Pz-Y2e">
-                                <rect key="frame" x="38" y="257" width="244" height="53"/>
+                                <rect key="frame" x="38" y="401" width="244" height="53"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="53" id="0mB-LJ-fBR"/>
+                                    <constraint firstAttribute="width" constant="244" id="RgD-tv-afG"/>
+                                    <constraint firstAttribute="height" constant="53" id="Ym7-3N-oNm"/>
                                 </constraints>
                                 <state key="normal" image="facebook-login-button">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -286,23 +270,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="rqZ-yU-PeO" firstAttribute="top" secondItem="zmk-ug-H0l" secondAttribute="bottom" constant="20" id="8Hj-fI-zi3"/>
-                            <constraint firstItem="zmk-ug-H0l" firstAttribute="leading" secondItem="Axw-XN-15h" secondAttribute="leadingMargin" id="8he-Xh-ukX"/>
-                            <constraint firstItem="zmk-ug-H0l" firstAttribute="trailing" secondItem="Axw-XN-15h" secondAttribute="trailingMargin" id="M2x-KV-GEk"/>
-                            <constraint firstItem="rtS-Pz-Y2e" firstAttribute="leading" secondItem="Axw-XN-15h" secondAttribute="leadingMargin" constant="22" id="P3w-w7-bV1"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="rtS-Pz-Y2e" secondAttribute="trailing" constant="22" id="XGN-a0-LCu"/>
-                            <constraint firstItem="rqZ-yU-PeO" firstAttribute="trailing" secondItem="Axw-XN-15h" secondAttribute="trailingMargin" id="YMW-PA-qnz"/>
-                            <constraint firstItem="zmk-ug-H0l" firstAttribute="top" secondItem="I3H-qk-xce" secondAttribute="bottom" constant="54" id="eAi-PY-Ag4"/>
-                            <constraint firstItem="rqZ-yU-PeO" firstAttribute="leading" secondItem="Axw-XN-15h" secondAttribute="leadingMargin" id="tOF-rx-Ry5"/>
-                            <constraint firstItem="rtS-Pz-Y2e" firstAttribute="top" secondItem="rqZ-yU-PeO" secondAttribute="bottom" constant="103" id="v15-vT-2oF"/>
+                            <constraint firstItem="GEx-aw-6ga" firstAttribute="top" secondItem="rtS-Pz-Y2e" secondAttribute="bottom" constant="114" id="3ej-Sa-In3"/>
+                            <constraint firstAttribute="centerX" secondItem="rtS-Pz-Y2e" secondAttribute="centerX" id="rEJ-Eg-ioA"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <outlet property="emailTextField" destination="zmk-ug-H0l" id="NTw-V4-Z5h"/>
-                        <outlet property="loginButton" destination="DCO-34-vN0" id="ZNy-wD-RXS"/>
-                        <outlet property="passwordTextField" destination="rqZ-yU-PeO" id="PWf-dR-tB4"/>
-                        <outlet property="signUpButton" destination="MoG-On-grd" id="5G4-tz-Nv1"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9LA-lL-j5y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

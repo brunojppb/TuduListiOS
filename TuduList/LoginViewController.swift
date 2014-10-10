@@ -17,25 +17,15 @@ protocol LoginViewControllerDelegate{
 class LoginViewController: UIViewController {
     
     
-    //MARK - UI components
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var signUpButton: UIButton!
-    
-    
-    @IBAction func login(sender: AnyObject) {
-    }
-    
-    @IBAction func signUp(sender: AnyObject) {
-    }
-    
+    //MARK - UI components    
     
     var delegate:LoginViewControllerDelegate?
                             
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.configureButtons()
+        let image = UIImage(named: "Default")
+        self.view.backgroundColor = UIColor(patternImage: image!)
+//        self.configureButtons()
     }
     
     @IBAction func facebookLogin(sender: UIButton) {
@@ -76,18 +66,18 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func configureButtons(){
-        //login button customization
-        let loginInsets:UIEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
-        let loginBackgroundImage:UIImage = UIImage(named: "greenButton.png").resizableImageWithCapInsets(loginInsets)
-        self.loginButton.setBackgroundImage(loginBackgroundImage, forState: UIControlState.Normal)
-        //signup button customization
-        let signupInsets:UIEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
-        let signupBackgroundImage:UIImage = UIImage(named: "orangeButton.png").resizableImageWithCapInsets(signupInsets)
-        self.signUpButton.setBackgroundImage(signupBackgroundImage, forState: UIControlState.Normal)
-        
-        
-    }
+//    func configureButtons(){
+//        //login button customization
+//        let loginInsets:UIEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+//        let loginBackgroundImage:UIImage = UIImage(named: "greenButton.png").resizableImageWithCapInsets(loginInsets)
+//        self.loginButton.setBackgroundImage(loginBackgroundImage, forState: UIControlState.Normal)
+//        //signup button customization
+//        let signupInsets:UIEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+//        let signupBackgroundImage:UIImage = UIImage(named: "orangeButton.png").resizableImageWithCapInsets(signupInsets)
+//        self.signUpButton.setBackgroundImage(signupBackgroundImage, forState: UIControlState.Normal)
+//        
+//        
+//    }
 
 }
 

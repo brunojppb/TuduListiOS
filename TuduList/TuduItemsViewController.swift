@@ -65,7 +65,7 @@ class TuduItemsViewController:  UITableViewController,
             else{
                 let rect = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)
                 let label = UILabel(frame: rect)
-                label.text = "No data..."
+                label.text = "Your TuduList is empty :("
                 label.textColor = UIColor.blackColor()
                 label.numberOfLines = 0;
                 label.textAlignment = NSTextAlignment.Center
@@ -117,7 +117,7 @@ class TuduItemsViewController:  UITableViewController,
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let cell:TuduListCell = self.tableView.cellForRowAtIndexPath(indexPath) as TuduListCell
         let tuduItem = self.fetchedResultsController.objectAtIndexPath(indexPath) as TuduItem
-        tuduItem.checked = !NSNumber.numberWithBool(tuduItem.checked)
+        tuduItem.checked = NSNumber(bool: !tuduItem.checked.boolValue)
         cell.checkedImage.hidden = tuduItem.checked.boolValue
         self.managedObjectContext?.save(nil)
         
