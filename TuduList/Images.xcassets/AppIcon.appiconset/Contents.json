@@ -17,6 +17,12 @@
       "idiom" : "iphone",
       "filename" : "AppIcon-144.png",
       "scale" : "2x"
+    },
+    {
+      "size" : "60x60",
+      "idiom" : "iphone",
+      "filename" : "icon-retina.png",
+      "scale" : "3x"
     }
   ],
   "info" : {
