@@ -15,6 +15,9 @@ class TuduItemsViewController:  UITableViewController,
     
     var managedObjectContext:NSManagedObjectContext?
     
+    
+    @IBOutlet weak var sideBarButton: UIBarButtonItem!
+    
     //lazy initialization
     lazy var fetchedResultsController:NSFetchedResultsController = {
         let fetchRequest = NSFetchRequest()
@@ -35,6 +38,16 @@ class TuduItemsViewController:  UITableViewController,
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        self.managedObjectContext = appDelegate.managedObjectContext
+        
+        //SWRevealViewController Configiration
+        self.sideBarButton.target = self.revealViewController()
+        self.sideBarButton.action = Selector("revealToggle:")
+        
+        //self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        
+        
         self.performFetch()
         if PFUser.currentUser() == nil{
             //Show the screen to log in the user

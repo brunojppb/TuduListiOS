@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		8E5C67D8352347CEB581741F /* libPods-TuduList.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65FDD0B7B4CE452181F99F17 /* libPods-TuduList.a */; };
 		922A8D0819E4166300060C1C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 922A8D0719E4166300060C1C /* CoreData.framework */; };
+		9265BD2C19E8279100E41777 /* SideBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9265BD2B19E8279100E41777 /* SideBarViewController.swift */; };
+		9265BD2E19E8316D00E41777 /* ThanksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9265BD2D19E8316D00E41777 /* ThanksViewController.swift */; };
 		92668E3519BA2F6500234DDD /* TuduItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92668E3419BA2F6500234DDD /* TuduItemsViewController.swift */; };
 		926C749A19B763A500FD2A97 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926C749919B763A500FD2A97 /* AppDelegate.swift */; };
 		926C749C19B763A500FD2A97 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926C749B19B763A500FD2A97 /* LoginViewController.swift */; };
@@ -36,6 +38,8 @@
 		79677C08E4D34A549058351A /* Pods-TuduList.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TuduList.xcconfig"; path = "Pods/Pods-TuduList.xcconfig"; sourceTree = "<group>"; };
 		9200A83E19B7658600971EE7 /* TuduList-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TuduList-Bridging-Header.h"; sourceTree = "<group>"; };
 		922A8D0719E4166300060C1C /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		9265BD2B19E8279100E41777 /* SideBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideBarViewController.swift; sourceTree = "<group>"; };
+		9265BD2D19E8316D00E41777 /* ThanksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThanksViewController.swift; sourceTree = "<group>"; };
 		92668E3419BA2F6500234DDD /* TuduItemsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TuduItemsViewController.swift; sourceTree = "<group>"; };
 		926C749419B763A500FD2A97 /* TuduList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TuduList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		926C749819B763A500FD2A97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -155,6 +159,8 @@
 				926C749B19B763A500FD2A97 /* LoginViewController.swift */,
 				92668E3419BA2F6500234DDD /* TuduItemsViewController.swift */,
 				92B309EE19BA59A000ECC076 /* ItemDetailViewController.swift */,
+				9265BD2B19E8279100E41777 /* SideBarViewController.swift */,
+				9265BD2D19E8316D00E41777 /* ThanksViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -317,6 +323,8 @@
 				928CF1B519E34D930070FD29 /* DataModel.xcdatamodeld in Sources */,
 				92A8717419E327AB00E00807 /* TuduListCell.swift in Sources */,
 				92668E3519BA2F6500234DDD /* TuduItemsViewController.swift in Sources */,
+				9265BD2C19E8279100E41777 /* SideBarViewController.swift in Sources */,
+				9265BD2E19E8316D00E41777 /* ThanksViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

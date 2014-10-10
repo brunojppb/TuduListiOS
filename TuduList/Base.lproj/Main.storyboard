@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6206.9" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="H2E-f9-XiO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6249" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="SuM-ml-mYQ">
     <dependencies>
-        <deployment defaultVersion="1808" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7026.1"/>
-        <capability name="Constraints with attributes relative to the layout margin" minToolsVersion="6.0"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6243"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--TuduList-->
@@ -89,7 +89,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="TuduList" id="0S4-Ki-JbF">
-                        <barButtonItem key="leftBarButtonItem" image="cloud-button" id="XEX-sF-EpH"/>
+                        <barButtonItem key="leftBarButtonItem" image="side-bar-button" id="XEX-sF-EpH"/>
                         <barButtonItem key="rightBarButtonItem" image="add-button" style="done" id="AHV-hK-Fix">
                             <connections>
                                 <segue destination="dnw-7A-kOP" kind="modal" identifier="AddItem" id="hWg-da-HcW"/>
@@ -97,6 +97,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="sideBarButton" destination="XEX-sF-EpH" id="KA6-Ch-bs5"/>
                         <segue destination="USU-aw-dVj" kind="modal" identifier="LoginScreen" id="rcq-ru-piw"/>
                     </connections>
                 </tableViewController>
@@ -242,6 +243,128 @@
             </objects>
             <point key="canvasLocation" x="1369" y="747"/>
         </scene>
+        <!--Rear View Controller-->
+        <scene sceneID="9wC-w3-cpE">
+            <objects>
+                <tableViewController title="Rear View Controller" id="vTp-sK-v7E" customClass="SideBarViewController" customModule="TuduList" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="kZ4-x4-IM0">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Main" id="6Et-Cm-AIw" customClass="SideBar">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6Et-Cm-AIw" id="Pef-qY-PH1">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark" translatesAutoresizingMaskIntoConstraints="NO" id="kDI-lm-IVg">
+                                            <rect key="frame" x="15" y="-2" width="37" height="46"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="37" id="Hjw-l9-Izi"/>
+                                                <constraint firstAttribute="height" constant="46" id="eb9-K6-Vh6"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TuduList" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ltn-Be-GTQ">
+                                            <rect key="frame" x="60" y="5" width="92" height="34"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="92" id="6MB-IZ-Pot"/>
+                                                <constraint firstAttribute="height" constant="34" id="MlO-xy-Hll"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="KohinoorDevanagari-Book" family="Kohinoor Devanagari" pointSize="24"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="kDI-lm-IVg" firstAttribute="leading" secondItem="Pef-qY-PH1" secondAttribute="leadingMargin" constant="7" id="1Jf-Db-XHx"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="ltn-Be-GTQ" secondAttribute="bottom" constant="-3.5" id="3Hp-ty-bgI"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="kDI-lm-IVg" secondAttribute="bottom" constant="-8.5" id="vig-1o-IO9"/>
+                                        <constraint firstItem="ltn-Be-GTQ" firstAttribute="leading" secondItem="kDI-lm-IVg" secondAttribute="trailing" constant="8" id="w8k-WV-mBF"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="TM6-0s-TDX" kind="custom" identifier="Main" customClass="SWRevealViewControllerSegue" id="O6h-9Z-ses"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Thanks" id="6nO-PY-RUG">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6nO-PY-RUG" id="D3j-Mu-PIW">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mfr-U6-SCs">
+                                            <rect key="frame" x="15" y="14" width="21" height="23"/>
+                                            <color key="tintColor" red="0.31372550129890442" green="0.55686277151107788" blue="0.52941179275512695" alpha="1" colorSpace="deviceRGB"/>
+                                            <state key="normal" image="like"/>
+                                        </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Special Thanks" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mTP-pM-qrF">
+                                            <rect key="frame" x="53" y="3" width="160" height="34"/>
+                                            <fontDescription key="fontDescription" name="KohinoorDevanagari-Book" family="Kohinoor Devanagari" pointSize="24"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="mTP-pM-qrF" firstAttribute="leading" secondItem="mfr-U6-SCs" secondAttribute="trailing" constant="17" id="2Tj-DX-DSV"/>
+                                        <constraint firstItem="mfr-U6-SCs" firstAttribute="leading" secondItem="D3j-Mu-PIW" secondAttribute="leadingMargin" constant="7" id="3dB-py-Cxb"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="mfr-U6-SCs" secondAttribute="bottom" constant="-1.5" id="HZJ-fZ-DFj"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="mTP-pM-qrF" secondAttribute="bottom" constant="-1.5" id="pX5-CY-Hyn"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="OVU-O0-O0O" kind="custom" identifier="Thanks" customClass="SWRevealViewControllerSegue" id="cbG-9Q-WUU"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="vTp-sK-v7E" id="GtO-fx-y8k"/>
+                            <outlet property="delegate" destination="vTp-sK-v7E" id="SYQ-08-DtL"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fU2-83-E3i" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-192" y="95"/>
+        </scene>
+        <!--Thanks View Controller-->
+        <scene sceneID="w1h-Bg-gnY">
+            <objects>
+                <viewController id="OVU-O0-O0O" customClass="ThanksViewController" customModule="TuduList" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vPw-LD-zav"/>
+                        <viewControllerLayoutGuide type="bottom" id="yAx-jI-2ZW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="58n-b2-ln4">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y9d-L2-cx0">
+                                <rect key="frame" x="141" y="178" width="38" height="30"/>
+                                <fontDescription key="fontDescription" name="KohinoorDevanagari-Book" family="Kohinoor Devanagari" pointSize="15"/>
+                                <state key="normal" title="Icon8">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="icon8WebSite:" destination="OVU-O0-O0O" eventType="touchUpInside" id="s1C-lm-uvj"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dtT-pE-ocT">
+                                <rect key="frame" x="77" y="232" width="167" height="33"/>
+                                <fontDescription key="fontDescription" name="KohinoorDevanagari-Book" family="Kohinoor Devanagari" pointSize="15"/>
+                                <state key="normal" title="SWRevealViewController">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="SWRevealViewControllerWebSite:" destination="OVU-O0-O0O" eventType="touchUpInside" id="ahy-fZ-fwL"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uC8-3O-PAt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="280" y="87"/>
+        </scene>
         <!--Login View Controller-->
         <scene sceneID="Jwo-xL-36I">
             <objects>
@@ -255,7 +378,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rtS-Pz-Y2e">
-                                <rect key="frame" x="38" y="401" width="244" height="53"/>
+                                <rect key="frame" x="38" y="472" width="244" height="53"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="244" id="RgD-tv-afG"/>
                                     <constraint firstAttribute="height" constant="53" id="Ym7-3N-oNm"/>
@@ -270,19 +393,41 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="GEx-aw-6ga" firstAttribute="top" secondItem="rtS-Pz-Y2e" secondAttribute="bottom" constant="114" id="3ej-Sa-In3"/>
+                            <constraint firstItem="GEx-aw-6ga" firstAttribute="top" secondItem="rtS-Pz-Y2e" secondAttribute="bottom" constant="43" id="EgI-wg-EqT"/>
                             <constraint firstAttribute="centerX" secondItem="rtS-Pz-Y2e" secondAttribute="centerX" id="rEJ-Eg-ioA"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9LA-lL-j5y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="323" y="83"/>
+            <point key="canvasLocation" x="847" y="107"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Reveal View Controller-->
+        <scene sceneID="eDi-Tr-QgQ">
+            <objects>
+                <viewController id="SuM-ml-mYQ" customClass="SWRevealViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="QH8-5R-m6N"/>
+                        <viewControllerLayoutGuide type="bottom" id="ngW-jI-HyS"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hg3-gR-4RD">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <segue destination="vTp-sK-v7E" kind="custom" identifier="sw_rear" customClass="SWRevealViewControllerSegue" id="h6Q-FW-OBp"/>
+                        <segue destination="H2E-f9-XiO" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegue" id="dx7-I9-IwM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="J18-Jq-3Ez" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-716" y="481"/>
+        </scene>
+        <!--Front View Controller-->
         <scene sceneID="gby-jZ-xUQ">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="H2E-f9-XiO" sceneMemberID="viewController">
+                <navigationController title="Front View Controller" automaticallyAdjustsScrollViewInsets="NO" id="H2E-f9-XiO" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="65G-rM-83R">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -321,21 +466,20 @@
         <image name="calendar" width="27" height="28"/>
         <image name="cancel-button" width="19" height="20"/>
         <image name="checkmark" width="64" height="64"/>
-        <image name="cloud-button" width="27" height="18"/>
         <image name="edit-button" width="27" height="27"/>
         <image name="facebook-login-button" width="356" height="76"/>
+        <image name="like" width="21" height="23"/>
         <image name="save-button" width="27" height="27"/>
+        <image name="side-bar-button" width="29" height="25"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4">
-            <size key="portraitSize" width="320" height="568"/>
-            <size key="landscapeSize" width="568" height="320"/>
-        </simulatedScreenMetrics>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="m87-u8-TYc"/>
+        <segue reference="O6h-9Z-ses"/>
+        <segue reference="hWg-da-HcW"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
 </document>

@@ -8,6 +8,7 @@ pod 'Facebook-iOS-SDK'
 pod 'ParseFacebookUtils'
 pod 'MBProgressHUD', '~> 0.8'
 pod 'AFNetworking/Reachability'
+pod 'SWRevealViewController', '~> 2.0.0'
 
 end
 

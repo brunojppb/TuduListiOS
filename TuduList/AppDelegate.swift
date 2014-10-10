@@ -44,10 +44,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         PFFacebookUtils.initializeFacebook()
         
         
-        let navigationController:UINavigationController = self.window?.rootViewController as UINavigationController
-        let firstViewController:TuduItemsViewController = navigationController.viewControllers[0] as TuduItemsViewController
+        //let navigationController:UINavigationController = self.window?.rootViewController as UINavigationController
+        //let firstViewController:TuduItemsViewController = navigationController.viewControllers[0] as TuduItemsViewController
         
-        firstViewController.managedObjectContext = self.managedObjectContext
+        //firstViewController.managedObjectContext = self.managedObjectContext
         
         //configure local notifications
         let notificationSettings = UIUserNotificationSettings(forTypes: .Alert | .Sound, categories: nil)

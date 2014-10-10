@@ -39,6 +39,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-TuduList-SWRevealViewController.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-TuduList.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -47,42 +52,47 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>12110B13BEA0492E8E26755F</key>
+		<key>1BBE09A362F748B38C3F6584</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3630C95B8B54455183BF7FB2</key>
+		<key>34385CB69E51423A9872358A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>45E201DAD7F64CF29EE5579F</key>
+		<key>388E51008E2740B987A3B56F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>63D234F04C27497EBF4F1090</key>
+		<key>39B1D7A5D24F4D5CBA82A0ED</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>675CB8A5A1AC4BA79B823890</key>
+		<key>8E3CC3B8E360402BAB24430C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A6E38903B2BD4A4C9512AFC1</key>
+		<key>A9398E2F05A74D7891A4D28B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AEDDF3A0C0B54D13892E7BBC</key>
+		<key>BEA713C781AF46ECAF19AF07</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B84311E8E3584B229ED02486</key>
+		<key>BFB42A8AB20D4E7F8C2ED5A1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E6B43D21D3A145E69F460CDA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
