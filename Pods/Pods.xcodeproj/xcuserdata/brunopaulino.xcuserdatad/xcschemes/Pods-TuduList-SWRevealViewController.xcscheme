@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "34385CB69E51423A9872358A"
-               BuildableName = "libPods-TuduList-SWRevealViewController.a"
-               BlueprintName = "Pods-TuduList-SWRevealViewController"
+               BlueprintIdentifier = "61EBD29A181554918B868D76"
+               BuildableName = "libPods-tudulist-SWRevealViewController.a"
+               BlueprintName = "Pods-tudulist-SWRevealViewController"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

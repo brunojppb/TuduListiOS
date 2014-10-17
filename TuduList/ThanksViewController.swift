@@ -13,12 +13,12 @@ class ThanksViewController: UIViewController {
     @IBAction func icon8WebSite(sender: AnyObject) {
         
         let url = NSURL(string: "http://icons8.com/")
-        UIApplication.sharedApplication().openURL(url!)
+        UIApplication.sharedApplication().openURL(url)
         
     }
     @IBAction func SWRevealViewControllerWebSite(sender: AnyObject) {
         let url = NSURL(string: "https://github.com/John-Lluch/SWRevealViewController")
-        UIApplication.sharedApplication().openURL(url!)
+        UIApplication.sharedApplication().openURL(url)
     }
     override func viewDidLoad() {
         super.viewDidLoad()

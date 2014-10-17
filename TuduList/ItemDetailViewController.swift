@@ -43,6 +43,10 @@ class ItemDetailViewController: UITableViewController {
             self.datePicker.date = tudu.dueDate
             self.updateDateLabel()
         }
+        
+        //configure local notifications
+        let notificationSettings = UIUserNotificationSettings(forTypes: .Alert | .Sound, categories: nil)
+        UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
     }
     
     @IBAction func cancel(sender: UIBarButtonItem) {

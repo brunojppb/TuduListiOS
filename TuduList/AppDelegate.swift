@@ -13,15 +13,12 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
                             
     var window: UIWindow?
-    let ParseAppID:String! = "XuI4Z9QGBzbSQoW2u7soBAuzocB8jnJ7vUYghYwF"
-    let ParseClientKey:String! = "X8KMqOHjcWNwHQdGACG0uUlfN334tXy8L0rmbvFZ"
-    let DEBUG = true
     
     lazy var managedObjectContext:NSManagedObjectContext = {
         let modelURL = NSBundle.mainBundle().URLForResource("DataModel", withExtension: "momd")
         let mom = NSManagedObjectModel(contentsOfURL: modelURL!)
         
-        let psc = NSPersistentStoreCoordinator(managedObjectModel: mom!)
+        let psc = NSPersistentStoreCoordinator(managedObjectModel: mom)
         
         let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
         let storeURL = (urls[urls.endIndex-1]).URLByAppendingPathComponent("DataStore.sqlite")
@@ -40,25 +37,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        Parse.setApplicationId(ParseAppID, clientKey: ParseClientKey)
-        PFFacebookUtils.initializeFacebook()
-        
-        
         //let navigationController:UINavigationController = self.window?.rootViewController as UINavigationController
         //let firstViewController:TuduItemsViewController = navigationController.viewControllers[0] as TuduItemsViewController
         
         //firstViewController.managedObjectContext = self.managedObjectContext
         
-        //configure local notifications
-        let notificationSettings = UIUserNotificationSettings(forTypes: .Alert | .Sound, categories: nil)
-        UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
-        
         return true
     }
     
-    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String, annotation: AnyObject?) -> Bool {
-        return FBAppCall.handleOpenURL(url, sourceApplication: sourceApplication, withSession: PFFacebookUtils.session())
-    }
     
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
         println("DidReceiveNotification caled: \(notification)")
@@ -66,12 +52,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        FBAppCall.handleDidBecomeActiveWithSession(PFFacebookUtils.session())
+
     }
     
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-        [PFFacebookUtils.session().close()]
+
     }
 
     func applicationWillResignActive(application: UIApplication) {
@@ -86,21 +72,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillEnterForeground(application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-    }
-    
-    func ZAssert(test: Bool, message: String) {
-        if (test) {
-            return
-        }
-        
-        println(message)
-        
-        if (!DEBUG) {
-            return
-        }
-        
-        var exception = NSException()
-        exception.raise()
     }
     
 }

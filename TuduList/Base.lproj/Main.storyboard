@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6249" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="SuM-ml-mYQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="SuM-ml-mYQ">
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6243"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--TuduList-->
+        <!--tudulist-->
         <scene sceneID="WXJ-en-bVH">
             <objects>
-                <tableViewController id="TM6-0s-TDX" customClass="TuduItemsViewController" customModule="TuduList" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="TM6-0s-TDX" customClass="TuduItemsViewController" customModule="tudulist" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="78" sectionHeaderHeight="22" sectionFooterHeight="22" id="LUM-xV-A5j">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ItemCell" rowHeight="78" id="nLA-dh-2Ui" customClass="TuduListCell" customModule="TuduList" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ItemCell" rowHeight="78" id="nLA-dh-2Ui" customClass="TuduListCell" customModule="tudulist" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nLA-dh-2Ui" id="qyg-6B-A0o">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -30,8 +29,8 @@
                                             </constraints>
                                             <state key="normal" image="edit-button"/>
                                         </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TuduList Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9HK-Ye-hTb">
-                                            <rect key="frame" x="15" y="13" width="262" height="20.5"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="tudulist Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9HK-Ye-hTb">
+                                            <rect key="frame" x="15" y="13" width="262" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="20.5" id="BA9-gv-EOa"/>
                                             </constraints>
@@ -88,7 +87,7 @@
                             <outlet property="delegate" destination="TM6-0s-TDX" id="dv2-c4-Ml9"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="TuduList" id="0S4-Ki-JbF">
+                    <navigationItem key="navigationItem" title="tudulist" id="0S4-Ki-JbF">
                         <barButtonItem key="leftBarButtonItem" image="side-bar-button" id="XEX-sF-EpH"/>
                         <barButtonItem key="rightBarButtonItem" image="add-button" style="done" id="AHV-hK-Fix">
                             <connections>
@@ -98,7 +97,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="sideBarButton" destination="XEX-sF-EpH" id="KA6-Ch-bs5"/>
-                        <segue destination="USU-aw-dVj" kind="modal" identifier="LoginScreen" id="rcq-ru-piw"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FJP-Je-hQ8" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -108,7 +106,7 @@
         <!--Add Item-->
         <scene sceneID="3xy-gu-pQI">
             <objects>
-                <tableViewController id="VWO-S3-Tt2" customClass="ItemDetailViewController" customModule="TuduList" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="VWO-S3-Tt2" customClass="ItemDetailViewController" customModule="tudulist" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="4sQ-b9-LH5">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -246,7 +244,7 @@
         <!--Rear View Controller-->
         <scene sceneID="9wC-w3-cpE">
             <objects>
-                <tableViewController title="Rear View Controller" id="vTp-sK-v7E" customClass="SideBarViewController" customModule="TuduList" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Rear View Controller" id="vTp-sK-v7E" customClass="SideBarViewController" customModule="tudulist" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="kZ4-x4-IM0">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -264,7 +262,7 @@
                                                 <constraint firstAttribute="height" constant="46" id="eb9-K6-Vh6"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TuduList" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ltn-Be-GTQ">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="tudulist" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ltn-Be-GTQ">
                                             <rect key="frame" x="60" y="5" width="92" height="34"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="92" id="6MB-IZ-Pot"/>
@@ -328,7 +326,7 @@
         <!--Thanks View Controller-->
         <scene sceneID="w1h-Bg-gnY">
             <objects>
-                <viewController id="OVU-O0-O0O" customClass="ThanksViewController" customModule="TuduList" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="OVU-O0-O0O" customClass="ThanksViewController" customModule="tudulist" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vPw-LD-zav"/>
                         <viewControllerLayoutGuide type="bottom" id="yAx-jI-2ZW"/>
@@ -363,44 +361,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uC8-3O-PAt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="280" y="87"/>
-        </scene>
-        <!--Login View Controller-->
-        <scene sceneID="Jwo-xL-36I">
-            <objects>
-                <viewController id="USU-aw-dVj" customClass="LoginViewController" customModule="TuduList" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="I3H-qk-xce"/>
-                        <viewControllerLayoutGuide type="bottom" id="GEx-aw-6ga"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Axw-XN-15h">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rtS-Pz-Y2e">
-                                <rect key="frame" x="38" y="472" width="244" height="53"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="244" id="RgD-tv-afG"/>
-                                    <constraint firstAttribute="height" constant="53" id="Ym7-3N-oNm"/>
-                                </constraints>
-                                <state key="normal" image="facebook-login-button">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="facebookLogin:" destination="USU-aw-dVj" eventType="touchUpInside" id="N0i-O4-aNi"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="GEx-aw-6ga" firstAttribute="top" secondItem="rtS-Pz-Y2e" secondAttribute="bottom" constant="43" id="EgI-wg-EqT"/>
-                            <constraint firstAttribute="centerX" secondItem="rtS-Pz-Y2e" secondAttribute="centerX" id="rEJ-Eg-ioA"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9LA-lL-j5y" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="847" y="107"/>
+            <point key="canvasLocation" x="323" y="95"/>
         </scene>
         <!--Reveal View Controller-->
         <scene sceneID="eDi-Tr-QgQ">
@@ -467,7 +428,6 @@
         <image name="cancel-button" width="19" height="20"/>
         <image name="checkmark" width="64" height="64"/>
         <image name="edit-button" width="27" height="27"/>
-        <image name="facebook-login-button" width="356" height="76"/>
         <image name="like" width="21" height="23"/>
         <image name="save-button" width="27" height="27"/>
         <image name="side-bar-button" width="29" height="25"/>
@@ -478,8 +438,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="O6h-9Z-ses"/>
-        <segue reference="hWg-da-HcW"/>
+        <segue reference="Zig-WC-gzZ"/>
+        <segue reference="m87-u8-TYc"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
 </document>

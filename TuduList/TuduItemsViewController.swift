@@ -10,7 +10,6 @@ import UIKit
 import CoreData
 
 class TuduItemsViewController:  UITableViewController,
-                                LoginViewControllerDelegate,
                                 NSFetchedResultsControllerDelegate {
     
     var managedObjectContext:NSManagedObjectContext?
@@ -49,10 +48,6 @@ class TuduItemsViewController:  UITableViewController,
         
         
         self.performFetch()
-        if PFUser.currentUser() == nil{
-            //Show the screen to log in the user
-            self.showLoginScreen()
-        }
     }
     
     func formatDateToFormatedString(date: NSDate) -> String{
@@ -157,11 +152,6 @@ class TuduItemsViewController:  UITableViewController,
             let itemDetailViewController:ItemDetailViewController = navigationController.topViewController as ItemDetailViewController
             itemDetailViewController.managedObjectContext = self.managedObjectContext
         }
-        else if segue.identifier == "LoginScreen"{
-        
-            let loginScreen:LoginViewController = LoginViewController()
-            loginScreen.delegate = self
-        }
     }
     
     
@@ -169,10 +159,6 @@ class TuduItemsViewController:  UITableViewController,
     }
     
     //MARK: - Auxiliar Functions
-    func didFinishLogin(){
-        //load objects from CoreData Store
-        self.performFetch()
-    }
     
     func showLoginScreen() ->Void{
         self.performSegueWithIdentifier("LoginScreen", sender: self)

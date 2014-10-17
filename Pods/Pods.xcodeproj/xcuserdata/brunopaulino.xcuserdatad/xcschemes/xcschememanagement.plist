@@ -4,47 +4,17 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Pods-TuduList-AFNetworking.xcscheme</key>
+		<key>Pods-tudulist-MBProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-TuduList-Bolts.xcscheme</key>
+		<key>Pods-tudulist-SWRevealViewController.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-TuduList-Facebook-iOS-SDK.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods-TuduList-MBProgressHUD.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods-TuduList-Parse-iOS.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods-TuduList-Parse.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods-TuduList-ParseFacebookUtils.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods-TuduList-SWRevealViewController.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods-TuduList.xcscheme</key>
+		<key>Pods-tudulist.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -52,47 +22,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>1BBE09A362F748B38C3F6584</key>
+		<key>58105A351C57B666C17E458E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>34385CB69E51423A9872358A</key>
+		<key>61EBD29A181554918B868D76</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>388E51008E2740B987A3B56F</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>39B1D7A5D24F4D5CBA82A0ED</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>8E3CC3B8E360402BAB24430C</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>A9398E2F05A74D7891A4D28B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>BEA713C781AF46ECAF19AF07</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>BFB42A8AB20D4E7F8C2ED5A1</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E6B43D21D3A145E69F460CDA</key>
+		<key>C17306EF78853D949FFC4495</key>
 		<dict>
 			<key>primary</key>
 			<true/>
